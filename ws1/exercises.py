@@ -63,9 +63,15 @@ Exercise 5
              them with the semicolon (,)
             -combine 1+1 and "you say.." and print the sentence on the screen
             -create sentence "this is something awesome" using (triple-') mark, 
-             combine it with 1+1 calculation and
-             sentence "i think" with semicolon (,)
-            -you can combine strings with +-sign (e.g. print "a"+"b") too,
+             combine it with 1+1 calculation with semicolon (,)
+             and finally combine the above with sentence "i think" with semicolon (,)
+'''
+print "__exercise 5__"
+
+
+'''
+Exercise 6
+            -you can also combine strings with +-sign (e.g. print "a"+"b") too,
              create the word "codeacademy" using the +-sign by combining
              words "code" and "academy"
             -create the sentence "is pretty cool" by combining the three
