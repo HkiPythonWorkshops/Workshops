@@ -73,9 +73,3 @@ Exercise 5
              space between words so you don't end up having "isprettycool"
 '''
 print "__exercise 5__"
-
-print "how much is the fish? It is:", 1+1
-print 1+1, "you say.."
-print '''this is something awesome''', 1+1, "i think"
-print "code"+"academy"
-print "is "+"pretty " +"cool"
