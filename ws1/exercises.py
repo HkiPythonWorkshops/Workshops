@@ -36,11 +36,13 @@ Exercise 3
              use the triple apostrophe sign for formatting too
             -insert couple of spaces and hit the enter key couple of times to the 
              previous sentence
+            -combine the words "so" and "weird" with semicolon (,) using one print statement
+            -combine the words "so", "is", "this" with semicolon but use different
+             sign (", ', triple-') in different word (e.g. "so", 'is'..)
             -create a simple pyramid made out of asterix (*) signs to the screen 
              with print and using the triple apostrophe sign and simple formatting
 '''
 print "__exercise 3__"
-
 
 '''
 Exercise 4
@@ -57,10 +59,23 @@ print "__exercise 4__"
 
 '''
 Exercise 5
-            -
-            -
-            -
-            -
-            -
+            -print "how much is the fish? It is: " and the value of 1+1 by combining
+             them with the semicolon (,)
+            -combine 1+1 and "you say.." and print the sentence on the screen
+            -create sentence "this is something awesome" using (triple-') mark, 
+             combine it with 1+1 calculation and
+             sentence "i think" with semicolon (,)
+            -you can combine strings with +-sign (e.g. print "a"+"b") too,
+             create the word "codeacademy" using the +-sign by combining
+             words "code" and "academy"
+            -create the sentence "is pretty cool" by combining the three
+             words "is", "pretty", "cool" with +-sign. Remember to add
+             space between words so you don't end up having "isprettycool"
 '''
 print "__exercise 5__"
+
+print "how much is the fish? It is:", 1+1
+print 1+1, "you say.."
+print '''this is something awesome''', 1+1, "i think"
+print "code"+"academy"
+print "is "+"pretty " +"cool"
