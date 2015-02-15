@@ -13,7 +13,7 @@ You can find the workshops content in it's corresponding folder e.g.
 #####
 * [MOOC ohjelmointi](http://2015-ohjelmointi.mooc.fi/viikko1/)
 * [Learn Python the Hard Way] (http://learnpythonthehardway.org/book/)
-* [CodeAcademy Python] (http://www.codecademy.com/en/tracks/python)
+* [CodeAcademy Python Track] (http://www.codecademy.com/en/tracks/python)
 
 
 
