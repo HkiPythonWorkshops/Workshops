@@ -139,6 +139,11 @@ Python comes with a lot of inbuilt methods for manipulating strings:
 >>> "HELLO".lower()
 'hello'
 ```
+You can also easily get the length of a string: 
+```python
+>>> len("hello")
+5
+```
 
 ## Converting between strings, ints and floats
 
@@ -259,3 +264,107 @@ Zero!
 ```
 
 These are one type of **flow control** or **branching**, meaning the program can take many different paths depending on the situation. 
+
+## Data types: List
+
+A list in Python is a collection of items and can contain almost anything. 
+
+```python
+>>> shopping_list = ["eggs", "milk", "bread"]
+>>> print shopping_list
+['eggs', 'milk', 'bread']
+>>> my_variable = 5
+>>> my_list = [1, 2.0, "a string", True, my_variable]
+>>> len(my_list)
+5
+```
+
+Items in a list can be accessed based on their **index** or place in the list. The first item has the index 0, the second one 1, etc.
+
+```python
+>>> books = ["Fellowship of the Ring", "The Two Towers", "Return of the King"]
+>>> books[0]
+'Fellowship of the Ring'
+>>> books[1]
+'The Two Towers'
+>>> books[2]
+'Return of the King'
+```
+
+What happens when you try to access an index that doesn't exist? 
+```python
+>>> books[3]
+```
+
+You can create an empty list and add things to it: 
+```python
+>>> colors = []
+>>> colors.append("blue")
+>>> colors.append("red")
+>>> colors
+['blue', 'red']
+```
+
+You can also **join** a list of items by defining what you want to add between the items (in this case a comma and a space): 
+```python
+>>> animals = ["cats", "dogs", "horses"]
+>>> ", ".join(animals)
+'cats, dogs, horses'
+```
+
+You can easily sort a list (this happens **in-place**, meaning your original list is changed forever):
+```python
+>>> numbers = [6, 2, 4, 9, 10]
+>>> numbers.sort()
+>>> numbers
+[2, 4, 6, 9, 10]
+```
+
+## Loops
+
+Often we need to do things many times. A **for** loop allows us to do something once for each item in a list or range.
+
+```python
+>>> books = ["Fellowship of the Ring", "The Two Towers", "Return of the King"]
+>>> for book in books:
+...     print book
+...
+Fellowship of the Ring
+The Two Towers
+Return of the King
+```
+
+When you need to do something a certain amount of times, you can use range(x, y): 
+```python
+>>> for i in range(1, 5):
+...     print i
+...
+1
+2
+3
+4
+```
+
+A **while** loop, on the other hand, allows us to repeat an action until the condition we give returns a **False**.
+```python
+>>> while i < 5:
+...     i = i + 1
+...     print i
+...
+1
+2
+3
+4
+5
+```
+
+It's important to have a condition that will eventually return **False**! Otherwise your program will get stuck. Don't try this (or if you do, click ctrl+c to stop the loop): 
+```python
+>>> while 10 > 5:
+...     print "This is an infinite loop!"
+...
+This is an infinite loop!
+This is an infinite loop!
+This is an infinite loop!
+...```
+
