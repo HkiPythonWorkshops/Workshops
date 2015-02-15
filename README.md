@@ -1,2 +1,3 @@
-# Workshops
-Workshop materials
+# HKI Python Workshops Content
+
+## Workshop materials
