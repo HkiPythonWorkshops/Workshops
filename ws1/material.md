@@ -194,3 +194,68 @@ print var2
 What’s the value of *var2*? It's still 1,  since it's actually pointing to number 1 and not to *var1*.
 
 
+## Booleans and comparisons
+
+A **boolean** can either be **True** or **False**. In Python, making different kinds of comparisons returns a boolean value: 
+```python
+>>> 5 == 5
+True
+>>> 5 != 6
+True
+>>> 3 <= -2
+False
+>>> 10 > 5
+True
+```
+
+1. **==** means **is equal to**
+2. **!=** means **not equal to**
+3. **>** and **<** mean greater or less than
+4. **>=** and **<=** mean greater/less than or equal to. 
+
+Note that **==** is for making comparisons and it's different from **=** which is used to assign a value to a variable. 
+
+You can also save a boolean value into a variable: 
+```python
+>>> a = True
+>>> a
+True
+```
+
+## Conditionals
+
+Often in programs you need to do different things based on the situation. In these cases you can use an **if** clause: 
+
+```python
+>>> number = 1
+>>> if number > 0:
+...     print "Your number is positive!"
+...
+Your number is positive!
+```
+Note the indentation. The content of an **if** clause has to be indented. 
+
+You might have to do something else in case the **if** clause returns a False value: 
+```python
+>>> number = -1
+>>> if number > 0:
+...     print "Your number is positive!"
+...else:
+...     print "Your number is negative!"
+Your number is negative!
+```
+
+Sometimes you have to take into account even more possibilities: 
+```python
+>>> number = 0
+>>> if number > 0:
+...     print "Positive!"
+... elif number == 0:
+...     print "Zero!"
+... else:
+...     print "Negative!"
+...
+Zero!
+```
+
+These are one type of **flow control** or **branching**, meaning the program can take many different paths depending on the situation. 
