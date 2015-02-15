@@ -1,11 +1,5 @@
-Workshop 1
-=====
-
-Excercises
+Workshop 1 Excercises
 -----
-
-### 1
-
-### 2
-
-### 3
+1. first
+2. second
+3. third
