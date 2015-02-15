@@ -347,15 +347,15 @@ When you need to do something a certain amount of times, you can use range(x, y)
 
 A **while** loop, on the other hand, allows us to repeat an action until the condition we give returns a **False**.
 ```python
+>>> i = 1
 >>> while i < 5:
-...     i = i + 1
 ...     print i
+...     i = i + 1
 ...
 1
 2
 3
 4
-5
 ```
 
 It's important to have a condition that will eventually return **False**! Otherwise your program will get stuck. Don't try this (or if you do, click ctrl+c to stop the loop): 
