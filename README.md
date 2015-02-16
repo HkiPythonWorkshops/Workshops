@@ -11,13 +11,12 @@ You can find the workshops content in it's corresponding folder e.g.
 
 ### Reading
 #####
-* [MOOC ohjelmointi](http://2015-ohjelmointi.mooc.fi/viikko1/)
 * [Learn Python the Hard Way](http://learnpythonthehardway.org/book/)
 * [CodeAcademy Python Track](http://www.codecademy.com/en/tracks/python)
 
 
 
-### [Setting up Python for your machine](http://learnpythonthehardway.org/book/ex0.html)
+### [Setting up Python for your machine](https://wiki.python.org/moin/BeginnersGuide/Download)
 
 
 ### [Learn Python Using Python Koans](https://github.com/gregmalcolm/python_koans)
