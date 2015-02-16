@@ -1,81 +1,124 @@
 #!/usr/bin/env python
 
-print "hello world"
-
 
 ###############################################
 ##########         EXERCISES         ##########
 ###############################################
+
+#########
+######### NUMBERS
+#########
+
+
 '''
 Exercise 1
-            -print your name to the screen
-            -print "is having fun learning Python!" to the screen
-            -print ten asterix (*-sign) to the screen
+            - Calculate the value of 4+4 and 42/8.0 
+            - What is the value of the following calculation: 3*8+(100-75)-7 ?
+            - Count how many hours are in a year?
+            - Count how many minutes are in a decade?
+            - Count how many seconds old are you?
 '''
 print "__exercise 1__"
 
 
-'''
-Exercise 2
-            -print "we  can  have  really  simple  formatting!" to 
-             the screen" (hit the space-key couple or more 
-             times between words)
-            -print 'and we can use the apostrophe sign for printting too'
-            -print empty string to the screen using "" or ''
-            -print "or use triple apostrophe signs" using three ' signs
-             in the beginning and in the end of the sentence
+
+
+#########
+######### STRINGS AND PRINTING
+#########
 
 '''
+Exercise 2
+            -Print your name to the screen
+            -Print "is having fun learning Python!" to the screen
+            -Print ten asterisks (*-sign) to the screen
+'''
 print "__exercise 2__"
+
+# Your code here
 
 
 '''
 Exercise 3
-            -print the sentences "now this is.." <hit the enter key> "..something weird" to
-             the screen using the apostrophe sign and see that you can 
-             use the triple apostrophe sign for formatting too
-            -insert couple of spaces and hit the enter key couple of times to the 
-             previous sentence
-            -combine the words "so" and "weird" with semicolon (,) using one print statement
-            -combine the words "so", "is", "this" with semicolon but use different
-             sign (", ', triple-') in different word (e.g. "so", 'is'..)
-            -create a simple pyramid made out of asterix (*) signs to the screen 
-             with print and using the triple apostrophe sign and simple formatting
+            - Print a string surrounded with single quotes (')
+            - Print a string surrounded with double quotes (")
+
 '''
+
 print "__exercise 3__"
+
+# Your code here
+
 
 '''
 Exercise 4
-            -calculate the value of 4+4
-            -..and notice that after running the file we don't see the answer to
-             that calculation on the screen! Add the print statement beginning
-             of the line. But don't add the " or ' signs!
-            -print the value of 42/8.0 to the screen by combining print and
-             the actual calculation
-            -what is the value of the following calculation: 3*8+(100-75)-7
+            - Print a string on many lines using line breaks \n
+            - Combine the words "code" and "cademy" with the + operator using one print statement
+            - Print a string many times using the * operator
+            
 '''
 print "__exercise 4__"
 
+# Your code here
+
+
+#########
+######### CONVERSIONS
+#########
 
 '''
 Exercise 5
-            -print "how much is the fish? It is: " and the value of 1+1 by combining
-             them with the semicolon (,)
-            -combine 1+1 and "you say.." and print the sentence on the screen
-            -create sentence "this is something awesome" using (triple-') mark, 
-             combine it with 1+1 calculation with semicolon (,)
-             and finally combine the above with sentence "i think" with semicolon (,)
+            - Print "How much is the fish? It is: " and the value of 1+1 as a string
+            - Convert these: 
+                  "5" into an integer
+                  3 into a float
+                  300 into a string
+            - How would you get a float as a result of this division: 100/3? 
 '''
 print "__exercise 5__"
 
+# Your code here
+
+
+
+#########
+######### VARIABLES
+#########
 
 '''
 Exercise 6
-            -you can also combine strings with +-sign (e.g. print "a"+"b") too,
-             create the word "codeacademy" using the +-sign by combining
-             words "code" and "academy"
-            -create the sentence "is pretty cool" by combining the three
-             words "is", "pretty", "cool" with +-sign. Remember to add
-             space between words so you don't end up having "isprettycool"
+
+      - Save three numbers into num1, num2 and num3 and calculate their mean (average)
+      - Save two names as name1 and name2 and say hello to both
+      - a = 1 and b = 2. How would you swap their values? Use a third variable.
 '''
-print "__exercise 5__"
+
+print "__exercise 6__"
+
+# Your code here
+
+
+
+
+#########
+######### COMPARISONS AND CONDITIONALS
+#########
+
+
+'''
+Exercise 7
+
+      - Use ==, !=, >=, <=, > and < to compare some numbers (or strings!)
+      - Let price be a number. Write an if/else clause that prints "That's expensive" if the 
+            price is higher than 100, otherwise it should print "What a bargain!"
+      - Write a program that recognizes at least three different capital cities. Using 
+      if and elif, the code should print out the name of the country whose capital city it is. 
+      E.g.: if the city is Paris, print "France", if the city is Rome, print "Italy", and so on. 
+      Make an else clause in the end for cases where the city is not recognized. 
+
+
+'''
+
+print "__exercise 7_"
+
+# Your code here
