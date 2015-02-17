@@ -6,7 +6,7 @@ You can find the workshops content in it's corresponding folder e.g.
 
 `ws1/material.md` *contains all material that we cover during the meetup*
 
-`ws/exercises.py` *contains the excercises for the current meetup*
+`ws1/exercises.py` *contains the excercises for the current meetup*
 
 
 ### Reading
