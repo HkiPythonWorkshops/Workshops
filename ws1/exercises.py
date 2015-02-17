@@ -138,3 +138,16 @@ Exercise 8
 print "__exercise 8_"
 
 # Your code here
+
+
+'''
+Exercise 9
+      - Write a while loop that prints out numbers from 1 to 5 and then exits. 
+      - Create a while loop that iterates through a list using indexes. Use a counter that
+            starts at 0 and increase its value by one inside the loop. 
+      
+'''
+
+print "__exercise 9_"
+
+# Your code here
