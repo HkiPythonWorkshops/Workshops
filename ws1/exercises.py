@@ -122,3 +122,19 @@ Exercise 7
 print "__exercise 7_"
 
 # Your code here
+
+
+#########
+######### LISTS AND LOOPS
+#########
+
+'''
+Exercise 8
+
+      - Create an empty list and append the strings "learning", "python", "is", "fun" to it
+      - Write a program using for-loop that iterates through your list and prints the strings to the screen
+      - Modify your program so that when the word "fun" is iterated in the for-loop you also print the string "i know"
+'''
+print "__exercise 8_"
+
+# Your code here
