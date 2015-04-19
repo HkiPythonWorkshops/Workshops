@@ -67,9 +67,23 @@ In the main loop, we catch all events happening in our game, and react to them. 
 
 ```python
 for event in pygame.event.get():
-            if event.type == pygame.QUIT: 
+            if event.type == pygame.QUIT:
+                pygame.quit()
                 sys.exit()
 ```
+
+We can also assign shortcut key to Quit the game to iterate faster. Let's add new check to catch Key events.
+```python
+for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                sys.exit()
+            elif event.type == pygame.KEYDOWN:
+                if pygame.K_q:
+                    pygame.quit()
+                    sys.exit()
+```
+
 
 Now let's finally do something more interesting!
 
