@@ -1,0 +1,1773 @@
+tileset "The Nameless Tileset" {
+	tileWidth=32
+	tileHeight=32
+	description="An ongoing project to create a complete tileset for Goblin Camp, with a focus on visual clarity and a coherent style.  Updated for version 2.1."
+	author="SwarmOfBees"
+	version="1.1"
+
+	texture "large.png"
+	{
+		construction_sprite "Stone quarry" {
+			sprites=[0,1,2,3,4,5,6,7,8,9,
+				20,21,22,23,24,25,26,27,28,29,
+				40,41,42,43,44,45,46,47,48,49,
+				60,61,62,63,64,65,66,67,68,69,
+				80,81,82,83,84,85,86,87,88,89,
+				100,101,102,103,104,105,106,107,108,109,
+				120,121,122,123,124,125,126,127,128,129,
+				140,141,142,143,144,145,146,147,148,149,
+				160,161,162,163,164,165,166,167,168,169,
+				180,181,182,183,184,185,186,187,188,189]
+			width=10
+		}
+
+		construction_sprite "Mill" {
+			sprites=[10,11,12,13,14,
+				30,31,32,33,34,
+				50,51,52,53,54,
+				70,71,72,73,74,
+				90,91,92,93,94]
+			width=5
+		}
+
+		construction_sprite "Clay pit" {
+			sprites=[15,16,17,18,19,
+				35,36,37,38,39,
+				55,56,57,58,59,
+				75,76,77,78,79,
+				95,96,97,98,99]
+			width=5
+		}
+
+		construction_sprite "Charcoal pit" {
+			sprites=[110,111,112,113,114,
+				130,131,132,133,134,
+				150,151,152,153,154,
+				170,171,172,173,174,
+				190,191,192,193,194]
+			width=5
+		}
+	}
+
+	texture "workshops.png"
+	{
+		construction_sprite "Saw pit" {
+			sprites=[0,1,2,
+				16,17,18,
+				32,33,34]
+			width=3
+		}
+
+		construction_sprite "Carpenter" {
+			sprites=[3,4,5,
+				19,20,21,
+				35,36,37]
+			width=3
+		}
+
+		construction_sprite "Basket weaver" {
+			sprites=[6,7,8,
+				22,23,24,
+				38,39,40]
+			width=3
+		}
+
+		construction_sprite "Weaver" {
+			sprites=[9,10,11,
+				25,26,27,
+				41,42,43]
+			width=3
+		}
+
+		construction_sprite "Blacksmith" {
+			sprites=[12,13,14,
+				28,29,30,
+				44,45,46]
+			width=3
+		}
+
+		construction_sprite "Bone carver" {
+			sprites=[48,49,50,51,
+				64,65,66,67,
+				80,81,82,83]
+			width=4
+		}
+
+		construction_sprite "Butcher" {
+			sprites=[52,53,54,55,
+				68,69,70,71,
+				84,85,86,87]
+			width=4
+		}
+
+		construction_sprite "Kitchen" {
+			sprites=[56,57,58,59,
+				72,73,74,75,
+				88,89,90,91]
+			width=4
+		}
+
+		construction_sprite "Stone mason" {
+			sprites=[60,61,62,63,
+				76,77,78,79,
+				92,93,94,95]
+			width=4
+		}
+
+		construction_sprite "Tanner" {
+			sprites=[96,97,98,99,
+				112,113,114,115,
+				128,129,130,131]
+			width=4
+		}
+
+		construction_sprite "Bloomery" {
+			sprites=[100,101,102,103,
+				116,117,118,119,
+				132,133,134,135]
+			width=4
+		}
+
+		construction_sprite "Oil press" {
+			sprites=[104,105,106,107,
+				120,121,122,123,
+				136,137,138,139]
+			width=4
+		}
+
+		construction_sprite "Alchemist" {
+			sprites=[108,109,110,111,
+				124,125,126,127,
+				140,141,142,143]
+			width=4
+		}
+
+		construction_sprite "Weapon crafter" {
+			sprites=[144,145,
+			      160,161,
+			      176,177,
+			      192,193]
+			width=2
+		}
+
+		construction_sprite "Leather crafter" {
+			sprites=[146,147,
+			      162,163,
+			      178,179,
+			      194,195]
+			width=2
+		}
+
+		construction_sprite "Clay kiln" {
+			sprites=[148,149,
+			      164,165,
+			      180,181,
+			      196,197]
+			width=2
+		}
+
+		construction_sprite "Armorsmith" {
+			sprites=[150,151,152,153,
+			      166,167,168,169,
+			      182,183,184,185,
+			      198,199,200,201]
+			width=4
+		}
+
+		construction_sprite "Weaponsmith" {
+			sprites=[154,155,156,157,
+			      170,171,172,173,
+			      186,187,188,189,
+			      202,203,204,205]
+			width=4
+		}
+
+		construction_sprite "Winery" {
+			sprites=[208,209,210,211,
+			      224,225,226,227]
+			width=4
+		}
+
+		construction_sprite "Apiary" {
+			sprites=[158,159,
+				174,175]
+			width=2
+		}
+
+		construction_sprite "Bakery" {
+			sprites=[212,213,214,215,
+				228,229,230,231,
+				244,245,246,247]
+			width=4
+		}
+
+	}
+
+	texture "terrain.png"
+	{
+		terrain_sprite "grass" {
+			sprites=[
+			// Height < -1.0
+				0,16,32,
+			// Height < -0.5
+				1,17,33,
+			// Height < 0.0
+				2,18,34,
+			// Height < 0.25
+				3,19,35,
+			// Height < 0.5
+				4,20,36,
+			// Height < 1.0
+				5,21,37,
+			// Height < 2.0
+				6,22,38,
+			// Height < 4.0
+				7,23,39,
+			// Height >= 4.0
+				8,24,40
+			]
+			heightSplits=[-1.0, -0.5, 0.0, 0.25, 0.5, 1.0, 2.0, 4.0]
+			snowSprites=[9,25,41]
+			edgeSprites=[10,11,12,13]
+			snowEdgeSprites=[26,27,28,29]
+
+			details=[48,49,50,51,52,53,54,55]
+			snowedDetails=[64,65,66,67,68,69,70,71]
+			corruptDetails=[56,57,58,59,60,61,62,63]
+			detailsChance=0.025
+
+			burntOverlay=[42,43,44,45,46]
+			corruption=[80,81,82,83,
+					96,97,98,99,
+					112,113,114,115,
+					128,129,130,131]
+		}
+
+		// Terrain modifiers
+		waterAndIce=[84,85,86,87,88,
+				100,101,102,103,104,
+				105,106,116,117,118,
+				119,120,121,122]
+
+		terrain_sprite "bog" {
+			//sprites=[144,145,146,147]
+			wangTileset
+			sprites=[177,178,179,180,
+				193,194,195,196,
+				209,210,211,212,
+				225,226,227,228]
+			edgeSprites=[10,11,12,13]
+			details=[148,149,150,151]
+			detailsChance=0.25
+		}
+
+		terrain_sprite "rock" {
+			//sprites=[160,161,162,163]
+			wangTileset
+			sprites=[181,182,183,184,
+				197,198,199,200,
+				213,214,215,216,
+				229,230,231,232]
+			edgeSprites=[10,11,12,13]
+			details=[164,165,166]
+			detailsChance=0.5
+		}
+
+		terrain_sprite "mud" {
+			sprites=[176]
+		}
+
+		terrain_sprite "ditch" {
+			sprites=[192]
+			edgeSprites=[10,11,12,13]
+		}
+
+		terrain_sprite "riverbed" {
+			sprites=[208]
+			edgeSprites=[10,11,12,13]
+		}
+
+		terrain_sprite {
+			sprites=[224]
+			edgeSprites=[10,11,12,13]
+		}
+
+	}
+
+	texture "constructions.png"
+	{
+		construction_sprite "Pile" {
+			connectionMap
+			sprites=[0,1,2,3,
+				16,17,18,19,
+				32,33,34,35,
+				48,49,50,51]
+				
+		}
+
+		construction_sprite "Farm plot" {
+			connectionMap
+			sprites=[4,5,6,7,
+				20,21,22,23,
+				36,37,38,39,
+				52,53,54,55]
+		}
+
+		construction_sprite "Spawning pool" {
+			connectionMap
+			sprites=[8,9,10,11,
+				24,25,26,27,
+				40,41,42,43,
+				56,57,58,59,
+				210,211,212,213,214,
+				226,227,228,229,230,
+				242,243,244,245,246,
+				258,259,260,261,262,
+				274,275,276,277,278,
+				215,217,
+				231,232,
+				247,248]
+			/*
+			sprites=[224,225,240,241,240,225]
+			frameCount=6
+			fps=3
+			underconstructionSprites=[226]
+			*/
+			
+		}
+
+		construction_sprite "Spiked pit" {
+			connectionMap
+			sprites=[199]
+			unreadyTrapSprites=[12,13,14,15,
+						28,29,30,31,
+						44,45,46,47,
+						60,61,62,63]
+		}
+
+		construction_sprite "Duckboard" {
+			connectionMap
+			sprites=[64,65,66,67,
+				80,81,82,83,
+				96,97,98,99,
+				112,113,114,115]
+		}
+
+		construction_sprite "Brick road" {
+			connectionMap
+			sprites=[68,69,70,71,
+				84,85,86,87,
+				100,101,102,103,
+				116,117,118,119]
+		}
+
+		construction_sprite "Cobblestone road" {
+			connectionMap
+			sprites=[72,73,74,75,
+				88,89,90,91,
+				104,105,106,107,
+				120,121,122,123]
+		}
+
+		construction_sprite "Palisade" {
+			connectionMap
+			sprites=[76,77,78,79,
+				92,93,94,95,
+				108,109,110,111,
+				124,125,126,127]
+		}
+
+		construction_sprite "Brick wall" {
+			connectionMap
+			sprites=[128,129,130,131,
+				144,145,146,147,
+				160,161,162,163,
+				176,177,178,179]
+		}
+
+		construction_sprite "Stone wall" {
+			connectionMap
+			sprites=[132,133,134,135,
+				148,149,150,151,
+				164,165,166,167,
+				180,181,182,183]
+		}
+
+		construction_sprite "Rampart" {
+			connectionMap
+			sprites=[136,137,138,139,
+				152,153,154,155,
+				168,169,170,171,
+				184,185,186,187]
+		}
+
+		construction_sprite "Pontoon bridge" {
+			connectionMap
+			sprites=[140,141,142,143,
+				156,157,158,159,
+				172,173,174,175,
+				188,189,190,191]
+		}
+
+		construction_sprite "Bed" {
+			sprites=[192]
+		}
+
+		construction_sprite "Door" {
+			sprites=[193]
+			openSprite=194
+		}
+
+		construction_sprite "Statue" {
+			sprites=[195]
+		}
+
+		construction_sprite "Battlement" {
+			sprites=[196]
+		}
+
+		construction_sprite "Bear trap" {
+			sprites=[198]
+			unreadyTrapSprites=[197]
+		}
+
+		construction_sprite {
+			sprites=[200]
+		}
+
+		defaultUnderconstruction=200
+
+		construction_sprite "Totem pole" {
+			sprites=[201,202,203,
+				217,218,219,
+				233,234,235]
+			width=3
+		}
+
+		construction_sprite "Bone fence" {
+			connectionMap
+			sprites=[204,205,206,207,
+				220,221,222,223,
+				236,237,238,239,
+				252,253,254,255]
+		}
+
+	}
+
+	texture "misc.png"
+	{
+		// Overlays
+		territory=[0,1,2,3,4]
+		nonTerritory=[5]
+		marked=[6,7,8,9,10]
+
+		// Tile Highlights (when placing or selecting)
+		defaultTileHighlight=[4,5]
+		constructionTileHighlight=[4,5]
+		stockpileTileHighlight=[4,5]
+		treeFellingTileHighlight=[4,5]
+		harvestTileHighlight=[4,5]
+		orderTileHighlight=[4,5]
+		treeTileHighlight=[4,5]
+		dismantleTileHighlight=[4,5]
+		undesignateTileHighlight=[4,5]
+		bogTileHighlight=[4,5]
+		digTileHighlight=[4,5]
+		addTerritoryTileHighlight=[4]
+		removeTerritoryTileHighlight=[5]
+		gatherTileHighlight=[4,5]
+
+		marker=[11]
+
+		status_effect_sprite "hunger" {
+			sprites=[12]
+		}
+
+		status_effect_sprite "thirst" {
+			sprites=[13]
+		}
+
+		status_effect_sprite "panic" {
+			sprites=[14]
+			flashRate=5
+		}
+
+		status_effect_sprite "concussion" {
+			sprites=[15]
+		}
+
+		status_effect_sprite "drowsy" {
+			sprites=[16]
+		}
+
+		status_effect_sprite "sleeping" {
+			sprites=[17]
+		}
+
+		status_effect_sprite "poison" {
+			sprites=[18]
+		}
+
+		status_effect_sprite "bleeding" {
+			sprites=[19]
+		}
+
+		status_effect_sprite "sluggish" {
+			sprites=[20]
+			flashRate=1
+		}
+
+		status_effect_sprite "rage" {
+			sprites=[21]
+			flashRate=3
+		}
+
+		status_effect_sprite "eating" {
+			sprites=[22]
+		}
+
+		status_effect_sprite "drinking" {
+			sprites=[23]
+		}
+
+		status_effect_sprite "swimming" {
+			sprites=[24]
+			flashRate=0
+			alwaysOn
+		}
+
+		status_effect_sprite "burning" {
+			sprites=[25,26]
+			fps=10
+			flashRate=0
+			alwaysOn
+		}
+
+		fire=[25,26]
+		fireFPS=10
+
+		spell_sprite {
+		    sprites=[27,28]
+			fps=30
+		}
+
+		spell_sprite "spark" {
+		    sprites=[29]
+		}
+
+		spell_sprite "smoke" {
+			sprites=[30]
+		}
+
+		spell_sprite "steam" {
+			sprites=[31]
+		}
+
+		filth=[32,33,34,35,36,
+			37,38,39,40,41,
+			42,43,44,45,46,
+			47,48,49,50]
+
+		status_effect_sprite "Helpless" {
+			sprites=[51]
+		}
+
+		status_effect_sprite "Collywobbles" {
+			sprites=[52]
+		}
+
+		status_effect_sprite "Droops" {
+			sprites=[52]
+		}
+
+		status_effect_sprite "Rattles" {
+			sprites=[52]
+		}
+
+		status_effect_sprite "Chills" {
+			sprites=[52]
+		}
+
+		status_effect_sprite "Tripped" {
+			sprites=[53]
+		}
+
+		status_effect_sprite "Working" {
+			sprites=[54]
+		}
+
+		//status_effect_sprite "Flying" {
+		//	sprites=[55]
+		//}
+
+		status_effect_sprite "Cracked skull" {
+			sprites=[56]
+		}
+
+		status_effect_sprite "Invigorated" {
+			sprites=[57]
+		}
+
+		status_effect_sprite "Brave" {
+			sprites=[58]
+		}
+
+		status_effect_sprite "Drunk" {
+			sprites=[59]
+		}
+
+		status_effect_sprite "Higher ground" {
+			sprites=[60]
+		}
+
+		//status_effect_sprite "Carrying item" {
+		//	sprites=[61]
+		//}
+
+		status_effect_sprite "Healing" {
+			sprites=[62]
+		}
+
+		blood=[64,65,66,67,68]
+
+	}
+
+	texture "items.png"
+	{
+		item_sprite "Wood log" {
+			sprites=[0]
+			drawWhenWielded
+		}
+
+		item_sprite "Wood plank" {
+			sprites=[1]
+			drawWhenWielded
+		}
+
+		item_sprite "Wicker" {
+			sprites=[2]
+			drawWhenWielded
+		}
+
+		item_sprite "Wood charcoal" {
+			sprites=[3]
+			drawWhenWielded
+		}
+
+		item_sprite "Firewood" {
+			sprites=[4]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden door" {
+			sprites=[5]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone door" {
+			sprites=[6]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden barrel" {
+			sprites=[7]
+			drawWhenWielded
+		}
+
+		item_sprite "Crate" {
+			sprites=[8]
+			drawWhenWielded
+		}
+
+		item_sprite "Wicker basket" {
+			sprites=[9]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden bed" {
+			sprites=[10]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone bed" {
+			sprites=[11]
+			drawWhenWielded
+		}
+
+		item_sprite "Bloodberry" {
+			sprites=[12]
+			drawWhenWielded
+		}
+
+		item_sprite "Bloodberry seed" {
+			sprites=[13]
+			drawWhenWielded
+		}
+
+		item_sprite "Young Bloodberry shrub" {
+			sprites=[14]
+			drawWhenWielded
+		}
+
+		item_sprite "Bloodberry shrub" {
+			sprites=[15]
+			drawWhenWielded
+		}
+
+		item_sprite "Blueleaf seed" {
+			sprites=[16]
+			drawWhenWielded
+		}
+
+		item_sprite "Blueleaf sapling" {
+			sprites=[17]
+			drawWhenWielded
+		}
+
+		item_sprite "Blueleaf tree" {
+			sprites=[18]
+			drawWhenWielded
+		}
+
+		item_sprite "Nightbloom" {
+			sprites=[19]
+			drawWhenWielded
+		}
+
+		item_sprite "Nightbloom seed" {
+			sprites=[20]
+			drawWhenWielded
+		}
+
+		item_sprite "Nightbloom sapling" {
+			sprites=[21]
+			drawWhenWielded
+		}
+
+		item_sprite "Nightbloom tree" {
+			sprites=[22]
+			drawWhenWielded
+		}
+
+		item_sprite "Dried fruit" {
+			sprites=[23]
+			drawWhenWielded
+		}
+
+		item_sprite "Dead plant" {
+			sprites=[24]
+			drawWhenWielded
+		}
+
+		item_sprite "Hair" {
+			sprites=[25]
+			drawWhenWielded
+		}
+
+		item_sprite "Bones" {
+			sprites=[26]
+			drawWhenWielded
+		}
+
+		item_sprite "Chitin fragment" {
+			sprites=[27]
+			drawWhenWielded
+		}
+
+		item_sprite "Hide" {
+			sprites=[28]
+			drawWhenWielded
+		}
+
+		item_sprite "Leather" {
+			sprites=[29]
+			drawWhenWielded
+		}
+
+		item_sprite "Boiled leather" {
+			sprites=[30]
+			drawWhenWielded
+		}
+
+		item_sprite "Corpse" {
+			sprites=[31]
+			drawWhenWielded
+		}
+
+		item_sprite "Large corpse" {
+			sprites=[32]
+			drawWhenWielded
+		}
+
+		item_sprite "Huge corpse" {
+			sprites=[33]
+			drawWhenWielded
+		}
+
+		item_sprite "Body part" {
+			sprites=[34]
+			drawWhenWielded
+		}
+
+		item_sprite "Small corpse" {
+			sprites=[35]
+			drawWhenWielded
+		}
+
+		item_sprite "Arthropod corpse" {
+			sprites=[36]
+			drawWhenWielded
+		}
+
+		item_sprite "Water" {
+			sprites=[37]
+			drawWhenWielded
+		}
+
+		item_sprite "Berry wine" {
+			sprites=[38]
+			drawWhenWielded
+		}
+
+		item_sprite "Pie" {
+			sprites=[39]
+			drawWhenWielded
+		}
+
+		item_sprite "Meat" {
+			sprites=[40]
+			drawWhenWielded
+		}
+
+		item_sprite "Jerked meat" {
+			sprites=[41]
+			drawWhenWielded
+		}
+
+		item_sprite "Bark bread" {
+			sprites=[42]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone stew" {
+			sprites=[43]
+			drawWhenWielded
+		}
+
+		item_sprite "Bread" {
+			sprites=[44]
+			drawWhenWielded
+		}
+
+		item_sprite "Flour" {
+			sprites=[45]
+			drawWhenWielded
+		}
+
+		item_sprite "Bark powder" {
+			sprites=[46]
+			drawWhenWielded
+		}
+
+		item_sprite "Tree bark" {
+			sprites=[47]
+			drawWhenWielded
+		}
+
+		item_sprite "Birch bark" {
+			sprites=[48]
+			drawWhenWielded
+		}
+
+		item_sprite "Pine bark" {
+			sprites=[49]
+			drawWhenWielded
+		}
+
+		item_sprite "Willow bark" {
+			sprites=[50]
+			drawWhenWielded
+		}
+
+		item_sprite "Flower" {
+			sprites=[51]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden club" {
+			sprites=[52]
+		}
+		
+		item_sprite "Stone maul" {
+			sprites=[53]
+		}
+		
+		item_sprite "Stone axe" {
+			sprites=[54]
+		}
+		
+		item_sprite "Stone spear" {
+			sprites=[55]
+		}
+		
+		item_sprite "Bone dagger" {
+			sprites=[56]
+		}
+
+		item_sprite "Poisoned dagger" {
+			sprites=[57]
+		}
+
+		item_sprite "Iron spear" {
+			sprites=[58]
+		}
+
+		item_sprite "Iron war hammer" {
+			sprites=[59]
+		}
+
+		item_sprite "Iron axe" {
+			sprites=[60]
+		}
+
+		item_sprite "Iron sword" {
+			sprites=[61]
+		}
+		
+		item_sprite "Wooden arrow" {
+			sprites=[62]
+			drawWhenWielded
+		}
+		
+		item_sprite "Stone-tipped arrow" {
+			sprites=[63]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone arrow" {
+			sprites=[64]
+			drawWhenWielded
+		}
+		
+		item_sprite "Iron arrow" {
+			sprites=[65]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden bow" {
+			sprites=[66]
+		}
+
+		item_sprite "Quiver" {
+			sprites=[67]
+			drawWhenWielded
+		}
+
+		item_sprite "Rough stone" {
+			sprites=[68]
+			drawWhenWielded
+		}
+
+		item_sprite "Sharpened stone" {
+			sprites=[69]
+			drawWhenWielded
+		}
+
+		item_sprite "Stone block" {
+			sprites=[70]
+			drawWhenWielded
+		}
+
+		item_sprite "Blueleaf boll" {
+			sprites=[71]
+			drawWhenWielded
+		}
+
+		item_sprite "Cloth" {
+			sprites=[72]
+			drawWhenWielded
+		}
+
+		item_sprite "Rope" {
+			sprites=[73]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone statue" {
+			sprites=[74]
+			drawWhenWielded
+		}
+
+		item_sprite "Stone statue" {
+			sprites=[75]
+			drawWhenWielded
+		}
+
+		item_sprite "Cloth sack" {
+			sprites=[76]
+			drawWhenWielded
+		}
+
+		item_sprite "Padded jack" {
+			sprites=[77]
+			drawWhenWielded
+		}
+
+		item_sprite "Leather armor" {
+			sprites=[78]
+			drawWhenWielded
+		}
+
+		item_sprite "Chitin armor" {
+			sprites=[79]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone armor" {
+			sprites=[80]
+			drawWhenWielded
+		}
+
+		item_sprite "Brigandine" {
+			sprites=[81]
+			drawWhenWielded
+		}
+
+		item_sprite "Mail hauberk" {
+			sprites=[82]
+			drawWhenWielded
+		}
+
+		item_sprite "Plate armor" {
+			sprites=[83]
+			drawWhenWielded
+		}
+
+		item_sprite "Chitin plate" {
+			sprites=[84]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone plate" {
+			sprites=[85]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron sheet" {
+			sprites=[86]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron wire" {
+			sprites=[87]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron axe head" {
+			sprites=[88]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron spearhead" {
+			sprites=[89]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron arrow heads" {
+			sprites=[90]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron sword blade" {
+			sprites=[91]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden hilt" {
+			sprites=[92]
+			drawWhenWielded
+		}
+
+		item_sprite "Bone hilt" {
+			sprites=[93]
+			drawWhenWielded
+		}
+
+		item_sprite "Bog iron" {
+			sprites=[94]
+			drawWhenWielded
+		}
+
+		item_sprite "Sponge iron" {
+			sprites=[95]
+			drawWhenWielded
+		}
+
+		item_sprite "Wrought iron" {
+			sprites=[96]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron anvil" {
+			sprites=[97]
+			drawWhenWielded
+		}
+
+		item_sprite "Red clay" {
+			sprites=[98]
+			drawWhenWielded
+		}
+
+		item_sprite "Red brick" {
+			sprites=[99]
+			drawWhenWielded
+		}
+
+		item_sprite "Shovel" {
+			sprites=[100]
+			drawWhenWielded
+		}
+
+		item_sprite "Debris" {
+			sprites=[101]
+			drawWhenWielded
+		}
+
+		item_sprite "Ash" {
+			sprites=[102]
+			drawWhenWielded
+		}
+
+		item_sprite "Wooden bucket" {
+			sprites=[103]
+			drawWhenWielded
+		}
+
+		item_sprite "Meat pie" {
+			sprites=[104]
+			drawWhenWielded
+		}
+
+		item_sprite "Chillweed leaf" {
+			sprites=[105]
+			drawWhenWielded
+		}
+
+		item_sprite "Chillweed seed" {
+			sprites=[106]
+			drawWhenWielded
+		}
+
+		item_sprite "Young chillweed" {
+			sprites=[107]
+			drawWhenWielded
+		}
+
+		item_sprite "Chillweed bush" {
+			sprites=[108]
+			drawWhenWielded
+		}
+		
+		item_sprite "Chillwine" {
+			sprites=[109]
+			drawWhenWielded
+		}
+
+		item_sprite "Poison antidote" {
+			sprites=[110]
+			drawWhenWielded
+		}
+		
+		item_sprite "Healing tonic" {
+			sprites=[111]
+			drawWhenWielded
+		}
+		
+		item_sprite "Hognut" {
+			sprites=[112]
+			drawWhenWielded
+		}
+
+		item_sprite "Hognut seed" {
+			sprites=[113]
+			drawWhenWielded
+		}
+
+		item_sprite "Young hognut bush" {
+			sprites=[114]
+			drawWhenWielded
+		}
+
+		item_sprite "Hognut bush" {
+			sprites=[115]
+			drawWhenWielded
+		}
+
+		item_sprite "Hognut oil" {
+			sprites=[116]
+			drawWhenWielded
+		}
+		
+		item_sprite "Vegetable oil" {
+			sprites=[117]
+			drawWhenWielded
+		}
+
+		item_sprite "Mandrake root" {
+			sprites=[118]
+			drawWhenWielded
+		}
+
+		item_sprite "Mandrake poison" {
+			sprites=[119]
+			drawWhenWielded
+		}
+
+		item_sprite "Mandrake seed" {
+			sprites=[120]
+			drawWhenWielded
+		}
+
+		item_sprite "Young Mandrake" {
+			sprites=[121]
+			drawWhenWielded
+		}
+
+		item_sprite "Mandrake" {
+			sprites=[122]
+			drawWhenWielded
+		}
+
+		item_sprite "Lichfruit" {
+			sprites=[123]
+			drawWhenWielded
+		}
+
+		item_sprite "Lichfruit leaf" {
+			sprites=[124]
+			drawWhenWielded
+		}
+
+		item_sprite "Lichfruit seed" {
+			sprites=[125]
+			drawWhenWielded
+		}
+
+		item_sprite "Lichfruit sapling" {
+			sprites=[126]
+			drawWhenWielded
+		}
+
+		item_sprite "Stunted lichfruit tree" {
+			sprites=[127]
+			drawWhenWielded
+		}
+
+		item_sprite "Ghost cabbage" {
+			sprites=[128]
+			drawWhenWielded
+		}
+
+		item_sprite "Ghost cabbage seed" {
+			sprites=[129]
+			drawWhenWielded
+		}
+
+		item_sprite "Ghost cabbage shoot" {
+			sprites=[130]
+			drawWhenWielded
+		}
+
+		item_sprite "Ghost cabbage plant" {
+			sprites=[131]
+			drawWhenWielded
+		}
+
+		item_sprite "Radish" {
+			sprites=[132]
+			drawWhenWielded
+		}
+
+		item_sprite "Radish seed" {
+			sprites=[133]
+			drawWhenWielded
+		}
+
+		item_sprite "Radish plant" {
+			sprites=[134]
+			drawWhenWielded
+		}
+
+		item_sprite "Marshmerrow seed" {
+			sprites=[135]
+			drawWhenWielded
+		}
+
+		item_sprite "Young marshmerrow" {
+			sprites=[136]
+			drawWhenWielded
+		}
+
+		item_sprite "Marshmerrow" {
+			sprites=[137]
+			drawWhenWielded
+		}
+
+		item_sprite "Marshmerrow shoot" {
+			sprites=[138]
+			drawWhenWielded
+		}
+
+		item_sprite "Dreamvine seed" {
+			sprites=[139]
+			drawWhenWielded
+		}
+
+		item_sprite "Young Dreamvine" {
+			sprites=[140]
+			drawWhenWielded
+		}
+
+		item_sprite "Dreamvine plant" {
+			sprites=[141]
+			drawWhenWielded
+		}
+
+		item_sprite "Dreamvine" {
+			sprites=[142]
+			drawWhenWielded
+		}
+
+		item_sprite "Marubium" {
+			sprites=[143]
+			drawWhenWielded
+		}
+
+		item_sprite "Marubium seed" {
+			sprites=[144]
+			drawWhenWielded
+		}
+
+		item_sprite "Young marubium" {
+			sprites=[145]
+			drawWhenWielded
+		}
+
+		item_sprite "Marubium plant" {
+			sprites=[146]
+			drawWhenWielded
+		}
+
+		item_sprite "Earth" {
+			sprites=[147]
+			drawWhenWielded
+		}
+
+		item_sprite "Ice" {
+			//sprites=[148]
+			sprites=[160]
+			drawWhenWielded
+		}
+
+		item_sprite "Iron leghold trap" {
+			sprites=[149]
+			drawWhenWielded
+		}
+
+		item_sprite "Gib" {
+			sprites=[150]
+			drawWhenWielded
+		}
+
+		item_sprite "Mead" {
+			sprites=[151]
+			drawWhenWielded
+		}
+
+		item_sprite "Clay jar" {
+			sprites=[152]
+			drawWhenWielded
+		}
+
+		item_sprite "Honey" {
+			sprites=[153]
+			drawWhenWielded
+		}
+
+		item_sprite "Jam" {
+			sprites=[154]
+			drawWhenWielded
+		}
+
+		item_sprite "Silverthorn seed" {
+			sprites=[155]
+			drawWhenWielded
+		}
+
+		item_sprite "Thornberry" {
+			sprites=[156]
+			drawWhenWielded
+		}
+
+		item_sprite "Young Silverthorn shrub" {
+			sprites=[157]
+			drawWhenWielded
+		}
+
+		item_sprite "Silverthorn shrub" {
+			sprites=[158]
+			drawWhenWielded
+		}
+
+		item_sprite "Honeycomb" {
+			sprites=[159]
+			drawWhenWielded
+		}
+
+		item_sprite {
+			sprites=[161]
+		}
+
+	}
+
+	texture "orcs.png"
+	{
+		creature_sprite "orc" {
+			sprites=[0,1,2,3,4,5,6,7]
+			weaponOverlays=[8,9,10,11,12,13,14,15,16,17,18]
+			paperdoll
+			weaponTypes=["Wooden club", "Stone maul", "Stone axe", "Stone spear", "Bone dagger", "Poisoned dagger", "Iron spear", "Iron war hammer", "Iron axe", "Iron sword", "Wooden bow"]
+			armorTypes=["Padded jack", "Leather armor", "Chitin armor", "Bone armor", "Brigandine", "Mail hauberk", "Plate armor"]
+		}
+
+/*
+		creature_sprite "orc" {
+			sprites=[5,6,7,8,9]
+			weaponOverlays=[1,2,3,4]
+			paperdoll
+			weaponTypes=["Blunt weapon", "Slashing weapon", "Piercing weapon", "Ranged weapon"]
+			armorTypes=["Padded clothing", "Light armor", "Medium armor", "Heavy armor"]
+
+		}
+*/
+	}
+
+	texture "creatures.png"
+	{
+		/*
+		creature_sprite "orc" {
+			sprites=[0]
+		}
+		*/
+
+		creature_sprite "goblin" {
+			sprites=[1]
+		}
+
+		creature_sprite "giant snail" {
+			sprites=[2]
+		}
+
+		creature_sprite "starving wolf" {
+			sprites=[3]
+		}
+
+		creature_sprite "rabid albino rat" {
+			sprites=[4]
+		}
+
+		creature_sprite "snake" {
+			sprites=[5]
+		}
+
+		creature_sprite "soldier ant" {
+			sprites=[6]
+		}
+		
+		creature_sprite "killer bee" {
+			sprites=[7]
+		}
+		
+		creature_sprite "harpy" {
+			sprites=[8]
+		}
+		
+		creature_sprite "kobold barbarian" {
+			sprites=[9]
+		}
+		
+		creature_sprite "ogre" {
+			sprites=[11]
+		}
+		
+		creature_sprite "troll" {
+			sprites=[12]
+		}
+		
+		creature_sprite "skeleton" {
+			sprites=[13]
+		}
+
+		creature_sprite "bandersnatch" {
+			sprites=[14]
+		}
+
+		creature_sprite "jabberwock" {
+			sprites=[15]
+		}
+		
+		creature_sprite "minotaur" {
+			sprites=[16]
+		}
+		
+		creature_sprite "cyclops" {
+			sprites=[17]
+		}
+		
+		creature_sprite "giant" {
+			sprites=[18]
+		}
+		
+		creature_sprite "griffon" {
+			sprites=[19]
+		}
+
+		creature_sprite "unicorn" {
+			sprites=[20]
+		}
+		
+		creature_sprite "will o wisp" {
+			sprites=[21]
+		}
+
+		creature_sprite "raw golem" {
+			sprites=[22]
+		}
+		
+		creature_sprite "fired golem" {
+			sprites=[23]
+		}
+
+		creature_sprite "imp" {
+			sprites=[24]
+		}
+
+		creature_sprite "treeman" {
+			sprites=[25]
+		}
+
+		creature_sprite "werewolf" {
+			sprites=[26]
+		}
+
+		creature_sprite "feral vampire" {
+			sprites=[27]
+		}
+
+		creature_sprite "wild boar" {
+			sprites=[28]
+		}
+		
+		creature_sprite "salamander" {
+			sprites=[29]
+		}
+
+		creature_sprite "raptor" {
+			sprites=[30]
+		}
+		
+		creature_sprite "manticore" {
+			sprites=[31]
+		}
+
+		creature_sprite "cave worm" {
+			sprites=[32]
+		}
+
+		creature_sprite "fire elemental" {
+			sprites=[33]
+		}
+		
+		creature_sprite "netch" {
+			sprites=[34]
+		}
+
+		creature_sprite "elven scout" {
+			sprites=[35]
+		}
+
+		creature_sprite "human soldier" {
+			sprites=[36]
+		}
+
+		creature_sprite "mastodon" {
+			sprites=[37]
+		}
+
+		creature_sprite "mumak" {
+			sprites=[38]
+		}
+
+		creature_sprite "Baluchitherium" {
+			sprites=[39]
+		}
+
+		creature_sprite "kobold raider" {
+			sprites=[40]
+		}
+
+		creature_sprite "hungry bird" {
+			sprites=[41]
+		}
+
+		creature_sprite "Firebird" {
+			sprites=[42]
+		}
+
+		creature_sprite "giant bat" {
+			sprites=[43]
+		}
+
+		creature_sprite "evil treeman" {
+			sprites=[44]
+		}
+
+		creature_sprite "angry bee" {
+			sprites=[45]
+		}
+
+		creature_sprite {
+			sprites=[46]
+		}
+
+	}
+
+	texture "plants.png"
+	{
+		plant_sprite "Pine"{
+			sprites=[0]
+		}
+
+		plant_sprite "Wild Bloodberry bush" {
+			sprites=[1]
+		}
+
+		plant_sprite "Wild Blueleaf" {
+			sprites=[2]
+		}
+
+		plant_sprite "Dandelion" {
+			sprites=[3]
+		}
+
+		plant_sprite "Red Poppy" {
+			sprites=[4]
+		}
+
+		plant_sprite "Alpine aster" {
+			sprites=[5]
+		}
+
+		plant_sprite "Blue Skullcap" {
+			sprites=[6]
+		}
+
+		plant_sprite "Willow" {
+			sprites=[7]
+		}
+
+		plant_sprite "Birch" {
+			sprites=[8]
+		}
+
+		plant_sprite "Spruce" {
+			sprites=[9]
+		}
+
+		plant_sprite "Silvervine" {
+			sprites=[10]
+		}
+
+		plant_sprite "Thornbush" {
+			sprites=[11]
+		}
+
+		plant_sprite "Withering tree" {
+			sprites=[12]
+		}
+
+		plant_sprite "Redhollow" {
+			sprites=[13]
+		}
+
+		plant_sprite "Darkroot" {
+			sprites=[14]
+		}
+
+		plant_sprite "Scorched tree" {
+			sprites=[15]
+		}
+
+		plant_sprite "Lichen" {
+			sprites=[16]
+		}
+
+		plant_sprite "Moss" {
+			sprites=[17]
+		}
+
+		plant_sprite "Chillweed" {
+			sprites=[18]
+		}
+
+		plant_sprite "Mandrake shrub" {
+			sprites=[19]
+		}
+
+		plant_sprite "Gorgon plant" {
+			sprites=[20]
+		}
+
+		plant_sprite "Lichfruit growth" {
+			sprites=[21]
+		}
+
+		plant_sprite "Wild dreamvine" {
+			sprites=[22]
+		}
+
+		plant_sprite "Marshmerrow" {
+			sprites=[23]
+		}
+
+		plant_sprite "Hognut shrub" {
+			sprites=[24]
+		}
+
+		plant_sprite "Marubium shrub" {
+			sprites=[25]
+		}
+
+		plant_sprite "Wild nightbloom" {
+			sprites=[26]
+		}
+
+		plant_sprite "Ghost cabbage growth" {
+			sprites=[27]
+		}
+
+		plant_sprite "Wild radish" {
+			sprites=[28]
+		}
+
+		plant_sprite "Silverthorn" {
+			sprites=[29]
+		}
+
+		plant_sprite {
+			sprites=[30]
+		}
+
+	}
+
+}

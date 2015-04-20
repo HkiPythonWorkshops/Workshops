@@ -88,6 +88,9 @@ for event in pygame.event.get():
 Now let's finally do something more interesting!
 
 ## Draw the snake to the screen
+### Load sprite sheet
+### Load tile from sprite sheet
+### Draw snake to screen
 
 ## Move the snake
 
