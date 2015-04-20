@@ -17,6 +17,9 @@ SNAKE_SPRITE_NUM_Y = 0
 FLOWER_SPRITE_NUM_X = 3
 FLOWER_SPRITE_NUM_Y = 0
 
+# Pygame arrow keys
+PYGAME_MOVEMENT_CONTROLS = [pygame.K_UP, pygame.K_DOWN, pygame.K_RIGHT, pygame.K_LEFT]
+
 ############## TESTING
 def draw_text(background, text, location=(10,10)):
     fill_background(background)
@@ -57,6 +60,9 @@ def blit_background(background, source, dest):
     background.blit(source, dest)
 
 def random_object_location(background, obj):
+    """
+    Return object with random x,y that can be drawn to screen
+    """
     obj_rect = obj.get_rect()
     rand_width = random.randint(0, background.get_width())
     rand_height = random.randint(0, background.get_height())
@@ -84,7 +90,51 @@ def load_sprite_from_sheet(sprite_sheet, sprite_num_x, sprite_num_y):
                                       SPRITE_TILE_HEIGHT * sprite_num_y,
                                       32, 32))
     return sprite_sheet.subsurface(sprite_sheet.get_clip())
+
+def move_object(obj_rect, move_direction, speed=10):
+    """
+    obj_location that will be moved based on
+    move_direction pygame.event.key direction (UP, DOWN, RIGHT, LEFT)
+    with speed
+    Returns the Rect object for the given object
+    """
+    org_y = obj_rect.y
+    org_x = obj_rect.x
+    if move_direction == pygame.K_UP:
+        org_y = org_y - 1 - speed
+        print("moving up %s" % org_y)
+    elif move_direction == pygame.K_DOWN:
+        org_y = org_y + 1 + speed
+        print("moving down %s" % org_y)
+    elif move_direction == pygame.K_RIGHT:
+        org_x = org_x + 1 + speed
+        print("moving right %s" % org_x)
+    elif move_direction == pygame.K_LEFT:
+        org_x = org_x - 1 - speed
+        print("moving left %s" % org_x)
+    obj_rect.x = org_x
+    obj_rect.y = org_y
+    return obj_rect
+
+class Snake(object):
+    def __init__(self, sprite, loc_x, loc_y, speed):
+        pass
+
+def handle_movement(event, obj, f):
+    # Check does event.key appear in the valid movement keys, return if not
+    if not event.key in PYGAME_MOVEMENT_CONTROLS: return obj
+    # else call the movement function for the object
+    return f(obj, event.key)
+
+def draw_object(screen, background, obj, position):
+    print("moving position.x %s position.y %s" % (position.x, position.y))
+    screen.blit(background, (0,0))
     
+    screen.blit(obj, position)
+    # pygame.display.update()
+    # pygame.time.delay(100)
+
+
 def main():
     screen = setup_pygame(800, 600, 'my awesume pygame thingy')
     background = setup_background(screen, (0, 100, 0))
@@ -97,22 +147,33 @@ def main():
     snake = load_sprite_from_sheet(creature_sheet, SNAKE_SPRITE_NUM_X, SNAKE_SPRITE_NUM_Y)
     flower = load_sprite_from_sheet(plants_sheet, FLOWER_SPRITE_NUM_X, FLOWER_SPRITE_NUM_Y)
 
+    snake_position = snake.get_rect()
+    flower_location = flower.get_rect()
+    flower_location.x = 42
+    flower_location.y = 42
+    
     # MainLoop
     while True:
+        #screen.blit(background, (0, 0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 quit_pygame()
             elif event.type == pygame.KEYDOWN:
-                keys = pygame.key.get_pressed()
+                # TODO: position to key.get_pressed(0
+                snake_position = handle_movement(event, snake_position, move_object)
+
+                # TODO: handle collisions
                 if pygame.key.get_pressed()[pygame.K_LCTRL] and event.key == pygame.K_q:
                     quit_pygame()
-        screen.blit(background, (0, 0))
-        # Draw the snake+flower
-        screen.blit(snake, (0,0))
-        screen.blit(flower,(42,42))
 
-        # Update screen
+        # TODO: render all movements in the screen in one go
+
+        draw_object(screen, background, snake, snake_position)
+        screen.blit(flower, (42,42))
+
+        # Update
         pygame.display.update()
+        pygame.time.delay(100)
 
 if __name__ == '__main__':
     main()
