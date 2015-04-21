@@ -300,20 +300,24 @@ Alright, now we're ready to tackle the idea of collisions. When two objects in t
 In [pygame_snake.py](pygame_snake.py) you can see that after handling each movement, we check for collisions: 
 
 ```python
-is_collision = pygame.sprite.collide_rect(snake_c, flower_c)
-if is_collision: print("***collision detected***")
+if pygame.sprite.collide_rect(snake_c, flower_c):
+     # if we have collision, move flower to new random position and update score
+     flower_position.x = random.randint(0, background.get_width()-20)
+     flower_position.y = random.randint(0, background.get_height()-20)
+     score += 1
 ```
 PyGame offers us a ready-made function for checking if two objects have collided. If that happens, we change the location of the flower to a new random location.
 
-
 ## Tasks
 
-1. Add a counter that counts how many flowers the snake has eaten and print the amount to console when the game quits.
-2. Add a check to see if the snake goes out of the screen and make it so the snake can't go out of the view. 
-3. Increase the speed of the snake whenever he eats a flower. 
+1. Print the score of the game to console when the game quits.
+2. Increase the speed of the snake whenever he eats a flower. 
+3. Add a check to see if the snake goes out of the screen and make it so the snake can't go out of the view. 
+4. Make the flower move around randomly every 10 seconds so it's harder to catch.
 
 ## All done? 
 
 Have a look at more PyGame tutorials and projects: 
+* [PyGame Tutorials](http://pygame.org/wiki/tutorials)
 * [PyGame Tutorial by Nerd Paradise](http://www.nerdparadise.com/tech/python/pygame/basics/part1/)
 * [Simple Snake by sparkon](https://github.com/sparkon/ss_simple_snake_py)
