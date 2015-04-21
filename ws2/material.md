@@ -247,6 +247,7 @@ Now when you run the game, you should be able to move the snake around with the 
 
 Bonus: experiment with the speed, starting coordinates and delay and see how those affect the feeling of moving the snake. 
 
+
 ## Create the level around the snake
 
 Alright, now we have a moving snake. Let's create something else in the game!
@@ -257,7 +258,10 @@ First, let's make the background a nice green color. Change the fill color of ou
 screen.fill((0, 100, 0))
 ```
 
-Next, let's load a flower from the second sprite. Let's go through the same steps as for the snake: 
+
+## Draw a flower that the snake can eat
+
+Next, let's load a flower from the second sprite sheet. Let's go through the same steps as for the snake: 
 
 ```python
 plants_sheet = pygame.image.load('pygame_assets/plants.png')
@@ -268,4 +272,12 @@ plants_sheet.set_clip(pygame.Rect(32 * 3,
 flower = plants_sheet.subsurface(plants_sheet.get_clip())
 ```
 
-## Draw the blip (what snake can eat)
+Now let's draw the flower by adding this in the MainLoop
+```python
+flower_x = 400
+flower_y = 200
+
+screen.blit(flower, (flower_x, flower_y))
+```
+
+Now we should have a flower in the game as well as the snake. What happens when the snakes tries to eat the flower? 
