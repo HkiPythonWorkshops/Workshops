@@ -47,11 +47,12 @@ The main loop of the game is where we handle all the events happening in the gam
 A main loop has a condition that is true until we need to break out from it when the user exits the game. 
 
 ```python
-def MainLoop(self):
+def MainLoop():
     """This is the Main Loop of the Game"""
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT: 
+                pygame.quit()
                 sys.exit()
                 
 if __name__ == "__main__":
@@ -84,13 +85,96 @@ for event in pygame.event.get():
                     sys.exit()
 ```
 
+Now pressing **q** will also quit the game.  
 
 Now let's finally do something more interesting!
 
 ## Draw the snake to the screen
 ### Load sprite sheet
+
+To get the hero of our game, the snake, to appear on the screen, we need to load an image and create a sprite. In this example we'll use sprite sheets, which are collections of images for a game, e.g. different kinds of textures, items, characters, and so on. 
+
+For the loading to work, you need to have the *pygame_assets* folder inside the same folder as your game!
+
+Let's add this before the main loop: 
+```python
+character_sheet = pygame.image.load('pygame_assets/creatures.png')
+```
+
+
+
 ### Load tile from sprite sheet
+
+Now we have loaded the sprite sheet, but we haven't actually gotten the snake out of the sheet yet. 
+
+To do that, we have to **clip** from the sheet:
+
+```python
+character_sheet.set_clip(pygame.Rect(32 * 5,
+                                      32 * 0,
+                                      32, 32))
+
+snake = sprite_sheet.subsurface(sprite_sheet.get_clip())
+
+```
+
+What we're doing here is give set_clip 4 arguments:
+* rect_x/y    (x,y) location where we can find the sprite
+* tile_x/y    is the size of the sprite we are going to load (in our case 32x32)
+
+Now run it! And... nothing is still happening that you can see.
+
 ### Draw snake to screen
+
+To draw the snake on the screen, we'll call the **blit** method, which draws an image on top of another image, in this case our snake on the background. Add this in your MainLoop, inside the while loop but outside the for loop: 
+
+
+
+```python
+screen.blit(snake, (0,0))
+pygame.display.update()
+```
+
+So first we draw the snake, and then we update the screen to show the change. 
+
+Your game should look something like this now: 
+```python
+import pygame
+
+pygame.init()
+
+#screen initialization
+screen_size= [840, 480]
+screen = pygame.display.set_mode(screen_size)
+
+character_sheet = pygame.image.load('pygame_assets/creatures.png')
+
+character_sheet.set_clip(pygame.Rect(32 * 5,
+                                      32 * 0,
+                                      32, 32))
+
+snake = character_sheet.subsurface(character_sheet.get_clip())
+
+
+def MainLoop():
+    """This is the Main Loop of the Game"""
+    while True:
+		for event in pygame.event.get():
+		            if event.type == pygame.QUIT:
+		                pygame.quit()
+		                sys.exit()
+		            elif event.type == pygame.KEYDOWN:
+		                if pygame.K_q:
+		                    pygame.quit()
+		                    sys.exit()
+
+		screen.blit(snake, (0,0))
+		pygame.display.update()
+
+
+if __name__ == "__main__":
+    MainLoop()
+```
 
 ## Move the snake
 
