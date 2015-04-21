@@ -321,3 +321,5 @@ Have a look at more PyGame tutorials and projects:
 * [PyGame Tutorials](http://pygame.org/wiki/tutorials)
 * [PyGame Tutorial by Nerd Paradise](http://www.nerdparadise.com/tech/python/pygame/basics/part1/)
 * [Simple Snake by sparkon](https://github.com/sparkon/ss_simple_snake_py)
+  
+If you are interested to create your first *"real"* game, then the suggestion is to use framework that can handle most things out-of-the-box like [Cocos2d](http://en.wikipedia.org/wiki/Cocos2d) (see the pyton docs [here](http://python.cocos2d.org/doc.html)]
