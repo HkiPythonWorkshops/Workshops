@@ -165,19 +165,18 @@ if __name__ == "__main__":
 ## Move the snake
 Alright, so just having a snake on the screen isn't so interesting. Let's get it to move.
 
-Let's start by adding coordinates and speed for the snake. Add this right inside the MainLoop, before the while loop: 
+Let's start by getting the initial coordinates and setting the speed for the snake. Add this right inside the MainLoop, before the while loop: 
 ```python
-snake_x = 0
-snake_y = 0
+snake_position = snake.get_rect()
 speed = 3
 ```
 
 Then let's change the drawing with **blit** to this: 
 
 ```python
-snake_y += speed
-snake_x += speed
-screen.blit(snake, (snake_x,snake_y))
+snake_position.x = snake_position.x + speed
+snake_position.y = snake_position.y + speed
+screen.blit(snake, snake_position)
 ```
 And finally, after display.update(), let's add a delay: 
 ```python
@@ -194,7 +193,7 @@ Now the old images will be removed before the new one is drawn.
 
 ## Move the snake
 
-Of course we want to be in control of the snake by ourselves. So let's make the game respond to key presses.
+Of course we want to be in control of the snake by ourselves. So let's make the game respond to key presses instead of always moving by itself.
 
 Inside the MainLoop, in the while loop right after the for loop, add this: 
 
@@ -210,6 +209,12 @@ elif key_pressed[pygame.K_RIGHT]:
     snake_x += speed
 ```
 
+And remove the lines 
+```python
+snake_position.x = snake_position.x + speed
+snake_position.y = snake_position.y + speed
+```
+
 We're getting the keys pressed by the user and moving the snake the appropriate amount in the right direction. 
 
 Now your MainLoop should look like this: 
@@ -217,8 +222,7 @@ Now your MainLoop should look like this:
 def MainLoop():
     """This is the Main Loop of the Game"""
 
-    snake_x = 0
-    snake_y = 0
+    snake_position = snake.get_rect()
     speed = 3
 
     while True:
@@ -229,23 +233,23 @@ def MainLoop():
                         
         key_pressed = pygame.key.get_pressed()
         if key_pressed[pygame.K_UP]:
-            snake_y -= speed
+            snake_position.y = snake_position.y - speed
         elif key_pressed[pygame.K_DOWN]:
-            snake_y += speed
+            snake_position.y = snake_position.y + speed
         elif key_pressed[pygame.K_LEFT]:
-            snake_x -= speed
+            snake_position.x = snake_position.x - speed
         elif key_pressed[pygame.K_RIGHT]:
-            snake_x += speed
-            
+            snake_position.x = snake_position.x + speed
+
         screen.fill((0, 0, 0))
-        screen.blit(snake, (snake_x,snake_y))
+        screen.blit(snake, snake_position)
         pygame.display.update()
         pygame.time.delay(100)
 ```
 
 Now when you run the game, you should be able to move the snake around with the arrow keys.
 
-Bonus: experiment with the speed, starting coordinates and delay and see how those affect the feeling of moving the snake. 
+Bonus: experiment with the speed, starting coordinates (by setting snake_position.x and snake_position.y before the while loop) and delay, and see how those affect the feeling of moving the snake. 
 
 
 ## Create the level around the snake
@@ -274,10 +278,42 @@ flower = plants_sheet.subsurface(plants_sheet.get_clip())
 
 Now let's draw the flower by adding this in the MainLoop
 ```python
-flower_x = 400
-flower_y = 200
+flower_position = flower.get_rect()
+flower_position.x = 400
+flower_position.y = 300
 
-screen.blit(flower, (flower_x, flower_y))
+screen.blit(flower, flower_position)
 ```
-
 Now we should have a flower in the game as well as the snake. What happens when the snakes tries to eat the flower? 
+
+
+## Taking our game to the next level
+
+Before we get to collisions, let's tidy up our game. Let's use good coding practices like using variables instead of numbers inside the code, and let's move some code into functions so it won't clutter up our MainLoop. Otherwise the game will stay the same. See the file [pygame_snake.py](pygame_snake.py).
+
+We've also created the GameObject class and made the snake and flower GameObjects. Why? So that it will be easier to handle each item in the game as an object, and so that we can customize the movement etc for each item. 
+
+## Collisions
+
+Alright, now we're ready to tackle the idea of collisions. When two objects in the game meet, such as the snake and the flower, they **collide**. Usually some sort of event is triggered when a collision happens. 
+
+In [pygame_snake.py](pygame_snake.py) you can see that after handling each movement, we check for collisions: 
+
+```python
+is_collision = pygame.sprite.collide_rect(snake_c, flower_c)
+if is_collision: print("***collision detected***")
+```
+PyGame offers us a ready-made function for checking if two objects have collided. If that happens, we change the location of the flower to a new random location.
+
+
+## Tasks
+
+1. Add a counter that counts how many flowers the snake has eaten and print the amount to console when the game quits.
+2. Add a check to see if the snake goes out of the screen and make it so the snake can't go out of the view. 
+3. Increase the speed of the snake whenever he eats a flower. 
+
+## All done? 
+
+Have a look at more PyGame tutorials and projects: 
+* [PyGame Tutorial by Nerd Paradise](http://www.nerdparadise.com/tech/python/pygame/basics/part1/)
+* [Simple Snake by sparkon](https://github.com/sparkon/ss_simple_snake_py)
