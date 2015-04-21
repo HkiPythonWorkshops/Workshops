@@ -20,20 +20,6 @@ FLOWER_SPRITE_NUM_Y = 0
 # Pygame arrow keys
 PYGAME_MOVEMENT_CONTROLS = [pygame.K_UP, pygame.K_DOWN, pygame.K_RIGHT, pygame.K_LEFT]
 
-############## TESTING
-def draw_text(background, text, location=(10,10)):
-    fill_background(background)
-    blit_background(background, text, random_object_location(background, text))
-
-def render_text(font, text_msg, color=(250, 250, 250)):
-    text = font.render(text_msg, 1, color)
-    return text
-
-def setup_font(size):
-    font = pygame.font.Font(None, size)
-    return font
-############## TESTING
-
 def setup_pygame(screen_y, screen_x, window_title):
     pygame.init()
     screen = pygame.display.set_mode((screen_y, screen_x))
@@ -91,7 +77,7 @@ def load_sprite_from_sheet(sprite_sheet, sprite_num_x, sprite_num_y):
                                       32, 32))
     return sprite_sheet.subsurface(sprite_sheet.get_clip())
 
-def move_object(obj_rect, move_direction, speed=10):
+def move_object(obj_rect, move_direction, speed=4):
     """
     obj_location that will be moved based on
     move_direction pygame.event.key direction (UP, DOWN, RIGHT, LEFT)
@@ -102,20 +88,22 @@ def move_object(obj_rect, move_direction, speed=10):
     org_x = obj_rect.x
     if move_direction == pygame.K_UP:
         org_y = org_y - 1 - speed
-        print("moving up %s" % org_y)
+        # print("moving up %s" % org_y)
     elif move_direction == pygame.K_DOWN:
         org_y = org_y + 1 + speed
-        print("moving down %s" % org_y)
+        # print("moving down %s" % org_y)
     elif move_direction == pygame.K_RIGHT:
         org_x = org_x + 1 + speed
-        print("moving right %s" % org_x)
+        # print("moving right %s" % org_x)
     elif move_direction == pygame.K_LEFT:
         org_x = org_x - 1 - speed
-        print("moving left %s" % org_x)
+        # print("moving left %s" % org_x)
     obj_rect.x = org_x
     obj_rect.y = org_y
-    return obj_rect
+    #return obj_rect
 
+# TODO: take GameObject into use
+# http://www.pygame.org/docs/tut/MoveIt.html
 class GameObject(object):
     def __init__(self, surface, rect):
         if surface: self.surface = surface
@@ -125,71 +113,74 @@ class GameObject(object):
     def draw(self, screen):
         if not isinstance(screen, pygame.Surface): return
         screen.blit(self.surface, self.rect)
-        
 
-
-def handle_movement(event, obj, f):
+def handle_movement(key, obj, f):
     # Check does event.key appear in the valid movement keys, return if not
-    if not event.key in PYGAME_MOVEMENT_CONTROLS: return obj
+    if not key in PYGAME_MOVEMENT_CONTROLS: return obj
     # else call the movement function for the object
-    return f(obj, event.key)
+    return f(obj, key)
 
 def draw_object(screen, background, obj, position):
-    print("moving position.x %s position.y %s" % (position.x, position.y))
+    ## We shouldn't neet to care about background here
     screen.blit(background, (0,0))
-    
     screen.blit(obj, position)
-    # pygame.display.update()
-    # pygame.time.delay(100)
 
+def draw_text(background, text, location=(745,0)):
+    fill_background(background)
+    blit_background(background, text, location)
 
+def render_text(font, text_msg, color=(250, 250, 250)):
+    text = font.render(text_msg, 1, color)
+    return text
+    
 def main():
     screen = setup_pygame(800, 600, 'my awesume pygame thingy')
     background = setup_background(screen, (0, 100, 0))
+    font = pygame.font.Font(None, 42)
+    score = 0
 
     # Load the spritesheet where we load the images
     creature_sheet = load_sprite_sheet(CREATURE_SPRITE_SHEET)
     plants_sheet = load_sprite_sheet(PLANTS_SPRITE_SHEET)
 
     # load the tile we want to draw to screen
-    snake = load_sprite_from_sheet(creature_sheet, SNAKE_SPRITE_NUM_X, SNAKE_SPRITE_NUM_Y).convert()
-    flower = load_sprite_from_sheet(plants_sheet, FLOWER_SPRITE_NUM_X, FLOWER_SPRITE_NUM_Y).convert()
+    snake = load_sprite_from_sheet(creature_sheet, SNAKE_SPRITE_NUM_X, SNAKE_SPRITE_NUM_Y)
+    flower = load_sprite_from_sheet(plants_sheet, FLOWER_SPRITE_NUM_X, FLOWER_SPRITE_NUM_Y)
+
+    snake_c = GameObject(snake, snake.get_rect())
+    flower_c = GameObject(flower, flower.get_rect())
 
     # set Rect positions
-    snake_position = snake.get_rect()
-    flower_position = flower.get_rect()
+    snake_position = snake_c.rect
+    flower_position = flower_c.rect
     flower_position.x = 42
     flower_position.y = 42
 
-    snake_c = GameObject(snake, snake_position)
-    flower_c = GameObject(flower, flower_position)
-
     # MainLoop
     while True:
-        #screen.blit(background, (0, 0))
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if pygame.key.get_pressed()[pygame.K_LCTRL] and event.key == pygame.K_q or event.type == pygame.QUIT:
                 quit_pygame()
-            elif event.type == pygame.KEYDOWN:
-                # TODO: position to key.get_pressed(0
-                snake_position = handle_movement(event, snake_position, move_object)
 
-                # TODO: handle collisions
-                is_collision = pygame.sprite.collide_rect(snake_c, flower_c)
-                if is_collision: print("***collision detected***")
-                
-                print(type(screen))
-                if pygame.key.get_pressed()[pygame.K_LCTRL] and event.key == pygame.K_q:
-                    quit_pygame()
+        key = pygame.key.get_pressed()
+        if key[pygame.K_LEFT]: handle_movement(pygame.K_LEFT, snake_position, move_object)
+        elif key[pygame.K_RIGHT]: handle_movement(pygame.K_RIGHT, snake_position, move_object)
+        elif key[pygame.K_UP]: handle_movement(pygame.K_UP, snake_position, move_object)
+        elif key[pygame.K_DOWN]: handle_movement(pygame.K_DOWN, snake_position, move_object)
+        
+        if pygame.sprite.collide_rect(snake_c, flower_c):
+            # if we have collision, move flower to new random position and update score
+            flower_position.x = random.randint(0, background.get_width()-20)
+            flower_position.y = random.randint(0, background.get_height()-20)
+            score += 1
 
-        # TODO: render all movements in the screen in one go
+        # blit all objects
         draw_object(screen, background, snake, snake_position)
-        screen.blit(flower, (42,42))
+        screen.blit(flower, flower_position)
+        draw_text(background, render_text(font, str(score)))
 
-        # Update
+        # update
         pygame.display.update()
-        pygame.time.delay(100)
-
 
 if __name__ == '__main__':
     main()
