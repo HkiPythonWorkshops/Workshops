@@ -116,9 +116,17 @@ def move_object(obj_rect, move_direction, speed=10):
     obj_rect.y = org_y
     return obj_rect
 
-class Snake(object):
-    def __init__(self, sprite, loc_x, loc_y, speed):
-        pass
+class GameObject(object):
+    def __init__(self, surface, rect):
+        if surface: self.surface = surface
+        if rect: self.rect = rect
+    def move(self, org_position, new_position):
+        if not org_position or new_position: return
+    def draw(self, screen):
+        if not isinstance(screen, pygame.Surface): return
+        screen.blit(self.surface, self.rect)
+        
+
 
 def handle_movement(event, obj, f):
     # Check does event.key appear in the valid movement keys, return if not
@@ -144,14 +152,18 @@ def main():
     plants_sheet = load_sprite_sheet(PLANTS_SPRITE_SHEET)
 
     # load the tile we want to draw to screen
-    snake = load_sprite_from_sheet(creature_sheet, SNAKE_SPRITE_NUM_X, SNAKE_SPRITE_NUM_Y)
-    flower = load_sprite_from_sheet(plants_sheet, FLOWER_SPRITE_NUM_X, FLOWER_SPRITE_NUM_Y)
+    snake = load_sprite_from_sheet(creature_sheet, SNAKE_SPRITE_NUM_X, SNAKE_SPRITE_NUM_Y).convert()
+    flower = load_sprite_from_sheet(plants_sheet, FLOWER_SPRITE_NUM_X, FLOWER_SPRITE_NUM_Y).convert()
 
+    # set Rect positions
     snake_position = snake.get_rect()
-    flower_location = flower.get_rect()
-    flower_location.x = 42
-    flower_location.y = 42
-    
+    flower_position = flower.get_rect()
+    flower_position.x = 42
+    flower_position.y = 42
+
+    snake_c = GameObject(snake, snake_position)
+    flower_c = GameObject(flower, flower_position)
+
     # MainLoop
     while True:
         #screen.blit(background, (0, 0))
@@ -163,17 +175,21 @@ def main():
                 snake_position = handle_movement(event, snake_position, move_object)
 
                 # TODO: handle collisions
+                is_collision = pygame.sprite.collide_rect(snake_c, flower_c)
+                if is_collision: print("***collision detected***")
+                
+                print(type(screen))
                 if pygame.key.get_pressed()[pygame.K_LCTRL] and event.key == pygame.K_q:
                     quit_pygame()
 
         # TODO: render all movements in the screen in one go
-
         draw_object(screen, background, snake, snake_position)
         screen.blit(flower, (42,42))
 
         # Update
         pygame.display.update()
         pygame.time.delay(100)
+
 
 if __name__ == '__main__':
     main()
