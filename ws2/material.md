@@ -1,5 +1,8 @@
 # Workshop 2 Material
 
+PyGame docs are here: [PyGame Doc](http://www.pygame.org/docs/index.html)
+
+
 ### Pre-Requirements
 * [Python](https://github.com/HkiPythonWorkshops/Workshops)
 * install pygame with **Pip**  
@@ -245,5 +248,24 @@ Now when you run the game, you should be able to move the snake around with the 
 Bonus: experiment with the speed, starting coordinates and delay and see how those affect the feeling of moving the snake. 
 
 ## Create the level around the snake
+
+Alright, now we have a moving snake. Let's create something else in the game!
+
+First, let's make the background a nice green color. Change the fill color of our background in the main loop:
+
+```python
+screen.fill((0, 100, 0))
+```
+
+Next, let's load a flower from the second sprite. Let's go through the same steps as for the snake: 
+
+```python
+plants_sheet = pygame.image.load('pygame_assets/plants.png')
+plants_sheet.set_clip(pygame.Rect(32 * 3,
+                                      32 * 0,
+                                      32, 32))
+
+flower = plants_sheet.subsurface(plants_sheet.get_clip())
+```
 
 ## Draw the blip (what snake can eat)
