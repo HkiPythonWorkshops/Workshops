@@ -102,17 +102,14 @@ def move_object(obj_rect, move_direction, speed=4):
     obj_rect.y = org_y
     #return obj_rect
 
-# TODO: take GameObject into use
-# http://www.pygame.org/docs/tut/MoveIt.html
 class GameObject(object):
+    """
+    Let's have a simple GameObject to hold our surface (sprite)
+    and the Rect that we can move around
+    """
     def __init__(self, surface, rect):
         if surface: self.surface = surface
         if rect: self.rect = rect
-    def move(self, org_position, new_position):
-        if not org_position or new_position: return
-    def draw(self, screen):
-        if not isinstance(screen, pygame.Surface): return
-        screen.blit(self.surface, self.rect)
 
 def handle_movement(key, obj, f):
     # Check does event.key appear in the valid movement keys, return if not
