@@ -203,9 +203,9 @@ if key_pressed[pygame.K_UP]:
 elif key_pressed[pygame.K_DOWN]:
     snake_position.y += speed
 elif key_pressed[pygame.K_LEFT]:
-    snake_x -= speed
+    snake_position.x -= speed
 elif key_pressed[pygame.K_RIGHT]:
-    snake_x += speed
+    snake_position.x += speed
 ```
 
 And remove the lines 
