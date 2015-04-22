@@ -109,7 +109,7 @@ character_sheet.set_clip(pygame.Rect(32 * 5,
                                       32 * 0,
                                       32, 32))
 
-snake = sprite_sheet.subsurface(sprite_sheet.get_clip())
+snake = character_sheet.subsurface(character_sheet.get_clip())
 
 ```
 
