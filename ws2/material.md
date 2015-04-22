@@ -33,7 +33,7 @@ If you run this, you'll notice it does absolutely nothing by itself just yet.
 
 To make a game, we need a background or *screen*.
 
-To create the screen, add this the file: 
+To create the screen, add this to the file: 
 
 ```python
 #screen initialization
@@ -47,7 +47,7 @@ If you try running this, a window will briefly pop up and then exit. That's beca
 
 The main loop of the game is where we handle all the events happening in the game, like movement, user's key presses, and so on. 
 
-A main loop has a condition that is true until we need to break out from it when the user exits the game. 
+A main loop has a condition that is true until we need to break out from it when the user exits the game. Let's add this to the end of our file:
 
 ```python
 def MainLoop():
@@ -62,7 +62,6 @@ if __name__ == "__main__":
     MainLoop()
 ```
 Now run the game, and the black screen should stay there. 
-
 Bonus: this is a good time to play around with the screen size!
 
 ## Quit Game
@@ -162,7 +161,7 @@ if __name__ == "__main__":
     MainLoop()
 ```
 
-## Move the snake
+## Getting the snake to move
 Alright, so just having a snake on the screen isn't so interesting. Let's get it to move.
 
 Let's start by getting the initial coordinates and setting the speed for the snake. Add this right inside the MainLoop, before the while loop: 
@@ -191,7 +190,7 @@ screen.fill((0, 0, 0))
 ```
 Now the old images will be removed before the new one is drawn. 
 
-## Move the snake
+## Move the snake with arrow keys
 
 Of course we want to be in control of the snake by ourselves. So let's make the game respond to key presses instead of always moving by itself.
 
