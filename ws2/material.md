@@ -206,13 +206,13 @@ Inside the MainLoop, in the while loop right after the for loop, add this:
 ```python
 key_pressed = pygame.key.get_pressed()
 if key_pressed[pygame.K_UP]:
-    snake_y -= speed
+    snake_position.y -= speed
 elif key_pressed[pygame.K_DOWN]:
-    snake_y += speed
+    snake_position.y += speed
 elif key_pressed[pygame.K_LEFT]:
-    snake_x -= speed
+    snake_position.x -= speed
 elif key_pressed[pygame.K_RIGHT]:
-    snake_x += speed
+    snake_position.x += speed
 ```
 
 And remove the lines 
