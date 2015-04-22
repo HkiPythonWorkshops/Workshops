@@ -306,7 +306,7 @@ Alright, now we're ready to tackle the idea of collisions. When two objects in t
 In [pygame_snake.py](pygame_snake.py) you can see that after handling each movement, we check for collisions after movement: 
 
 ```python
-if pygame.sprite.collide_rect(snake_c, flower_c):
+if pygame.sprite.collide_rect(snake, flower):
      # if we have collision, move flower to new random position and update score
      flower_position.x = random.randint(0, background.get_width()-20)
      flower_position.y = random.randint(0, background.get_height()-20)
