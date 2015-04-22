@@ -61,6 +61,12 @@ def MainLoop():
 if __name__ == "__main__":
     MainLoop()
 ```
+
+We also need to import sys so the program will exit cleanly. Add this to the start of the program: 
+```python
+import pygame
+```
+
 Now run the game, and the black screen should stay there. 
 Bonus: this is a good time to play around with the screen size!
 
@@ -129,6 +135,7 @@ So first we draw the snake, and then we update the screen to show the change. If
 Your game should look something like this now: 
 ```python
 import pygame
+import sys
 
 pygame.init()
 
