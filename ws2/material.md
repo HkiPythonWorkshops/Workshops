@@ -303,7 +303,7 @@ We've also created the GameObject class and made the snake and flower GameObject
 
 Alright, now we're ready to tackle the idea of collisions. When two objects in the game meet, such as the snake and the flower, they **collide**. Usually some sort of event is triggered when a collision happens. 
 
-In [pygame_snake.py](pygame_snake.py) you can see that after handling each movement, we check for collisions: 
+In [pygame_snake.py](pygame_snake.py) you can see that after handling each movement, we check for collisions after movement: 
 
 ```python
 if pygame.sprite.collide_rect(snake_c, flower_c):
@@ -312,6 +312,14 @@ if pygame.sprite.collide_rect(snake_c, flower_c):
      flower_position.y = random.randint(0, background.get_height()-20)
      score += 1
 ```
+
+We also need to add an import for the random library and initialize score as 0 before our main loop.
+```python
+import random
+
+score = 0
+```
+
 PyGame offers us a ready-made function for checking if two objects have collided. If that happens, we change the location of the flower to a new random location.
 
 ## Tasks
