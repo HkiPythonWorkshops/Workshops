@@ -64,7 +64,7 @@ if __name__ == "__main__":
 
 We also need to import sys so the program will exit cleanly. Add this to the start of the program: 
 ```python
-import pygame
+import sys
 ```
 
 Now run the game, and the black screen should stay there. 
