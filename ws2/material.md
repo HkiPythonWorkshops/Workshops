@@ -334,8 +334,8 @@ Now we can use the positions like we have so far and also check for collisions.
 ```python
 if pygame.sprite.collide_rect(snake_c, flower_c):
      # if we have collision, move flower to new random position and update score
-     flower_position.x = random.randint(0, background.get_width()-20)
-     flower_position.y = random.randint(0, background.get_height()-20)
+     flower_position.x = random.randint(0, screen.get_width()-20)
+     flower_position.y = random.randint(0, screen.get_height()-20)
      score += 1
 ```
 
