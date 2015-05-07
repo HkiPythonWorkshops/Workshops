@@ -350,10 +350,23 @@ PyGame offers us a ready-made function for checking if two objects have collided
 
 ## Tasks
 
-1. Print the score of the game to console when the game quits.
-2. Increase the speed of the snake whenever he eats a flower. 
-3. Add a check to see if the snake goes out of the screen and make it so the snake can't go out of the view. 
-4. Make the flower move around randomly every 10 seconds so it's harder to catch.
+** See the file  [pygame_snake_with_tasks.py](pygame_snake_with_tasks.py), it has all these improvements!** 
+
+#### Print the score of the game to console when the game quits.
+
+Hint: Add a print statement right before pygame.quit() that prints the score variable.
+
+#### Increase the speed of the snake whenever he eats a flower.
+
+Hint: when you detect the collision, increase the value of the speed variable by one. 
+
+#### Add a check to see if the snake goes out of the screen and make it so the snake can't go out of the view. 
+Hint: put the height and width of the screen in variables. When moving the snake, i.e. changing the snake's position, first check that the new value won't be higher than the height/width and less than 0. 
+
+#### Make the flower move around randomly every 10 seconds so it's harder to catch.
+ Hint: See the [PyGame time class](https://www.pygame.org/docs/ref/time.html) and e.g. [this example of using the timer](http://nullege.com/codes/show/src%40g%40a%40GameDevelopment-HEAD%40examples%40pygame%40timing%40game_clock_example.py/30/pygame.time.set_timer/python). Use pygame's set_timer for adding an event to the event queue every 10 seconds. In the for loop that handles our events, if the event is triggered, give the flower a new random location. 
+
+
 
 ## All done? 
 
