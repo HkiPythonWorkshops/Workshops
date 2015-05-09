@@ -1,8 +1,15 @@
 # Workshop 3 Material
 
-[Requests Library](http://docs.python-requests.org/)
-[Requests API documentation](http://docs.python-requests.org/en/latest/api/)
+### Important Links
 
+**Requests Library**
+
+* [Requests Library](http://docs.python-requests.org/)
+* [Requests API documentation](http://docs.python-requests.org/en/latest/api/)
+
+**Background reading about REST APIs, HTTP Methods etc**: 
+* [REST API tutorial](http://www.restapitutorial.com/)
+* [RESTful API design](http://restful-api-design.readthedocs.org/en/latest/intro.html)
 
 ### Pre-Requirements
 * [Python](https://github.com/HkiPythonWorkshops/Workshops)
@@ -96,7 +103,7 @@ The data returned is usually in XML or JSON format, depending on the API, the ty
 Requests also return a **status code**.
 
 | Status Code        | Meaning           | Comments  |
-| ------------- |:-------------:| -----:|
+| ------------- |:-------------:| -----|
 | 200      | OK | Request was successfull |
 | 201      | Created      |   The resource was created successfully |
 | 204 | No Content     |    The request was successfull but there's no content to send back |
@@ -117,9 +124,15 @@ GET is used for retrieving data. It's safe in the sense that it doesn't change a
 You can use it to retrieve a **collection** of items, e.g. all customers, or a specific resource in a collection by specifying some criteria in the request.
 
 Examples: 
+```
+GET http://samplelibrarydatabase.com/api/books
+```
+Retrieve all books in the books collection
 
-GET http://samplelibrarydatabase.com/api/books  - retrieve all books in our books collection
-GET http://samplelibrarydatabase.com/api/books/nonfiction/<id>  - retrieve the cookbook with this specific ID
+```
+GET http://samplelibrarydatabase.com/api/books/nonfiction/<id>
+```
+Retrieve the nonfiction book with this specific ID
 
 ### POST
 
@@ -127,7 +140,10 @@ POST is usually used for creating a new item in a collection. The new resource w
 
 E.g. to create a book we probably need a title and name at the very least. 
 
-POST http://samplelibrarydatabase.com/api/books/nonfiction title:Learning Python author:Mark Lutz - Create a new non-fiction book resource called "Learning Python" by Mark Lutz
+```
+POST http://samplelibrarydatabase.com/api/books/nonfiction title:Learning Python author:Mark Lutz
+```
+Create a new non-fiction book resource called "Learning Python" by Mark Lutz
 
 ### PUT
 
@@ -138,7 +154,7 @@ E.g. to update a book title, we could try:
 ```
 PUT http://samplelibrarydatabase.com/api/books/cookbooks/5814425 author:Kate Smith
 ``` 
-- Update the author of the cookbook resource with ID 5814425 to "Kate Smith"
+Update the author of the cookbook resource with ID 5814425 to "Kate Smith"
 
 
 ### DELETE
@@ -150,7 +166,7 @@ E.g. to delete a book, we could try:
 ```
 DELETE http://samplelibrarydatabase.com/api/books/nonfiction/8571415 
 ``` 
-- Delete the non-fiction book with ID 5814425 to "Delicious Pastries"
+Delete the non-fiction book with ID 5814425 to "Delicious Pastries"
 
 ## Using Requests Library to make HTTP requests
 
