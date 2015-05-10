@@ -4,7 +4,7 @@ from book import Book
 import sys
 
 books = []
-cur_id = 1
+cur_id = 0
 
 def get_books():
 	return books
@@ -33,7 +33,7 @@ def new_book():
 	print "new_book", title, author, pagecount
 	books.append(Book(cur_id,title,author,pagecount))
 	cur_id+=1
-	return HTTPResponse(status=200)
+	return HTTPResponse(status=201)
 
 @route('/book/<id>/delete', method='DELETE')
 def delete_book(id):
