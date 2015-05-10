@@ -175,7 +175,7 @@ r = requests.get('https://api.github.com/events')
 r = requests.post("http://httpbin.org/post")
 ```
 
-The other requests work just the same:
+The other HTTP methods work just the same:
 ```python
 r = requests.put("http://httpbin.org/put")
 r = requests.delete("http://httpbin.org/delete")
@@ -183,5 +183,20 @@ r = requests.head("http://httpbin.org/get")
 r = requests.options("http://httpbin.org/get")
 ```
 
-## Tasks
+Usually we want to also send some data with our request. 
+
+For example, if we need to send URL parameters: 
+```python
+my_parameters = {"q": "python"}
+r = requests.get("http://www.google.com/search", params=my_parameters)
+```
+
+We can do the same with headers and data: 
+```python
+my_headers = {"Content-Type": "application/json"}
+r = requests.put("http://www.google.com/search", headers=my_headers)
+
+my_data = {"title": "Pride and Prejudice", "author":"Jane Austen"}
+r = requests.put("http://samplelibrarydatabase.com/api/books/nonfiction/8571415", data=my_data)
+```
 
