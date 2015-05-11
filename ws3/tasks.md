@@ -110,8 +110,8 @@ E.g. getting the commits for this repo:
 requests.get("https://api.github.com/repos/HkiPythonWorkshops/Workshops/commits").json()
 ```
 
-Github exercise 1. try to get the 'sha' sum from the json-response
-Github exercise 2. try to get the 'message' from the individual commits
+*Github exercise 1.* try to get the 'sha' sum from the json-response  
+*Github exercise 2.* try to get the 'message' from the individual commits  
 
 ### WikiMedia API
 
@@ -137,4 +137,4 @@ payload = {'user': USERNAME, 'passwd': PASSWORD, 'limit':'25'}
 requests.get("http://www.reddit.com/r/python/top.json", params=payload).json()
 ```
 
-Reddit exercise:  parse all 'titles' from the json response. You can see the json-response in browser [here](http://www.reddit.com/r/python/top.json) (you need to have user-account to reddit for this to work)
+*Reddit exercise*:  parse all 'titles' from the json response. You can see the json-response in browser [here](http://www.reddit.com/r/python/top.json) (you need to have user-account to reddit for this to work)
