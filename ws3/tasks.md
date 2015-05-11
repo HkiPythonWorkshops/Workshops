@@ -121,3 +121,13 @@ headers = {"User-Agent":"Learning Python"}
 query = {"action":"query", "prop":"revisions", "titles":"Main Page", "rvprop":"content", "format":"json"}
 r= requests.get("http://en.wikipedia.org/w/api.php", headers=headers,params=query)
 ```
+
+### Reddit
+** [Reddit Api](http://www.reddit.com/dev/api)
+
+Get Top stories for sub-reddit
+
+```python
+payload = {'user': USERNAME, 'passwd': PASSWORD, 'limit':'25'}
+requests.get("http://www.reddit.com/r/python/top.json", params=payload).json()
+```
