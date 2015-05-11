@@ -12,7 +12,7 @@
 * Install the needed libraries: 
 
 ```python
-pip install -r bottle
+pip install bottle
 ```
 
 ## Run the demo app
