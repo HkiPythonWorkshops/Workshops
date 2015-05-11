@@ -50,6 +50,7 @@ The response has multiple properties we're interested in:
 response.status_code
 response.text
 response.url
+response.json()
 ```
 
 Now if you open http://localhost:8080 again, you should see your new book there. 
@@ -131,3 +132,5 @@ Get Top stories for sub-reddit
 payload = {'user': USERNAME, 'passwd': PASSWORD, 'limit':'25'}
 requests.get("http://www.reddit.com/r/python/top.json", params=payload).json()
 ```
+
+e.g. try to parse all titles from the json response
