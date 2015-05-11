@@ -106,7 +106,7 @@ E.g. getting the commits for this repo:
 * GET /repos/:owner/:repo/commits
 
 ```python
-r= requests.get("https://api.github.com/HkiPythonWorkshops/Workshops/commits")
+requests.get("https://api.github.com/repos/HkiPythonWorkshops/Workshops/commits").json()
 ```
 ### WikiMedia API
 
