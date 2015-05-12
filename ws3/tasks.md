@@ -75,7 +75,7 @@ Find the book's ID that you want to update. Then use PUT:
 
 ```python
 update_data = {'title': "Sense and Sensibility", "author":"Jane Austen", "pagecount":"390"}
-response = requests.post("http://localhost:8080/book/<id>/update", data=update_data)
+response = requests.put("http://localhost:8080/book/<id>/update", data=update_data)
 ```
 
 Check the response code to see that the update was successfull. 
