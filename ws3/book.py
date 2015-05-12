@@ -2,8 +2,8 @@ class Book(object):
 
 	def __init__(self, id, title, author, pagecount):
 		self.id = id
-		print "Creating new book"
-		print title, author, pagecount
+		print("Creating new book")
+		print(title, author, pagecount)
 		self.update_book(title, author, pagecount)
 
 	def get_book(self):
@@ -27,4 +27,4 @@ class Book(object):
 		self.title = title
 		self.author = author
 		self.pagecount = pagecount
-		print title, author, pagecount
+		print(title, author, pagecount)

@@ -13,7 +13,7 @@ def parse_content(request):
 	title = request.forms.get('title')
 	author = request.forms.get('author')
 	pagecount = request.forms.get('pagecount')
-	print "parse_content", title, author, pagecount
+	print("parse_content", title, author, pagecount)
 	return title, author, pagecount
 
 @route('/')
@@ -28,9 +28,9 @@ def index():
 @route('/book/new', method='POST')
 def new_book():
 	global cur_id
-	print request
+	print(request)
 	title, author, pagecount = parse_content(request)
-	print "new_book", title, author, pagecount
+	print("new_book", title, author, pagecount)
 	books.append(Book(cur_id,title,author,pagecount))
 	cur_id+=1
 	return HTTPResponse(status=201)
@@ -67,7 +67,7 @@ def update_book(id):
 		books[id].update_book(title, author, pagecount)
 		return HTTPResponse(status=200)
 	except :
-		print "Unexpected error:", sys.exc_info()[0]
+		print("Unexpected error:", sys.exc_info()[0])
 		return HTTPResponse(status=404)
 
 run(host='localhost', port=8080)
