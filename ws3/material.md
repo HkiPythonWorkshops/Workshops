@@ -18,7 +18,7 @@
 
 #### Check your Requests installation
 
-Create a new file and call it e.g. requests.py. 
+Create a new file and call it e.g. test_requests.py. 
 
 The first thing we want to do is import Requests:
 ```python
