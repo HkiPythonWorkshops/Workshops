@@ -16,7 +16,7 @@ Start from Workshop 1 if you're completely new to programming and Python!
 Make a new Python file, e.g. called exercises.py
 Run this file with the command `python exercises.py`
 
-A function is a re-usable bit of code that's very useful when we want to use the do the same thing many times in the same program. Instead of repeating the code, we make a function that can be called.
+A function is a re-usable bit of code that's very useful when we want to use the do the same thing many times in the same program. Instead of repeating the code, we make a function that can be called. :bangbang: *should there be an example*
 
 Let's make a function (notice the indentation): 
 
@@ -55,7 +55,7 @@ def addition(num_1, num_2):
 
 ### Classes and objects
 
-Objects in Python are instances of a *class*. An object has properties and methods attached to it. Here's a sample Dog class (again, notice the indentation):
+Class can be thought as an template to hold some re-usable functionality. Objects in Python are instances of that *class*. An object has properties and methods attached to it. Here's a sample Dog class (again, notice the indentation):
 
 
 ```python
@@ -151,6 +151,19 @@ True
 False
 ```
 
+:bangbang: *python shallow-copy for lists?*
+```python
+>>> my_list = ['a', 'b', 'c']
+>>> new_list = my_list
+>>> new_list
+['a', 'b', 'c']
+>>> new_list.append('d')
+>>> new_list
+['a', 'b', 'c', 'd']
+>>> my_list
+['a', 'b', 'c', 'd']
+```
+
 Exercises:
 
 
@@ -176,5 +189,15 @@ True
 False
 ```
 
+:bangbang: Iterating items with keys is also easy using the `items()` method provided by the built-in Dictionary-class
+```python3
+>>> my_dict = {'a':1, 'b':2, 'c':3}
+>>> for k,v in my_dict.items():
+...   print(k,v)
+... 
+c 3
+a 1
+b 2
+```
 
 
