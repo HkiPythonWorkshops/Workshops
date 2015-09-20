@@ -189,15 +189,111 @@ True
 False
 ```
 
-:bangbang: Iterating items with keys is also easy using the `items()` method provided by the built-in Dictionary-class
+:bangbang: Iterating items with keys is also easy using the `items()` method provided by the built-in Dictionary-class, which returns a list of the keys and values in the dictionary, as tuples: 
 ```python3
 >>> my_dict = {'a':1, 'b':2, 'c':3}
->>> for k,v in my_dict.items():
-...   print(k,v)
+>>> my_dict.items()
+[('a', 1), ('c', 3), ('b', 2)]
+>>> for key, value in my_dict.items():
+...   print(key, value)
 ... 
 c 3
 a 1
 b 2
 ```
+You can probably guess what the methods `keys()` and `values()` do. 
 
+Notice that the keys are not returned in any specific order. Dictionaries are *unordered*, meaning that the data in them is not stored in any particular order.
+
+Exercises:
+
+* Count how many of each letter there are in the string "Time And Relative Dimension In Space" using a dictionary to keep count of each letter's appearances. 
+ * Hint: Iterate over the string  (strings can be iterated the same way as lists with a `for` loop). For each character, check if it's in your dictionary. If not, add a new item and put the value as 1. If it is, add 1 to the value. 
+
+* Create a dictionary with keys 1-15 with a loop, assign None as the value. Then get the keys, sort them and iterate over them.
+
+Read more about data structures in Python: 
+* [Python 2 docs](https://docs.python.org/2/tutorial/datastructures.html)
+* [Python 3 docs](https://docs.python.org/3/tutorial/datastructures.html)
+ 
+ ## File I/O
+
+Check that you have the file "sonnet.txt" in the folder you're running these commands from!
+
+### Reading file content
+
+Before doing any file operations like reading, we need to open a file object in a specific mode. To open a file object for reading, use the method `open()` with the flag "r" (read):
+
+```python
+>>> my_file = open("sonnet.txt", "r")
+>>> my_file
+<open file 'sonnet.txt', mode 'r' at 0x105eb06f0>
+```
+Now that we have an opened file object, we can read all the contents in one go:
+
+```python
+>>> whole_file = my_file.read()
+>>> my_file.close()
+>>> whole_file
+"Shall I compare thee to a summer's day?\nThou art more lov"... and so on
+```
+As you can see, the whole file is just one long string, with the line breaks (\n) in the middle of the string. If you print `whole_file` it looks ok, because the line breaks are printed nicely.
+
+We also *closed* the file after reading it. After finishing with a file, you should always close the file to free up system resources taken up by the open file and to make sure the file won't get corrupted in case something goes wrong with your program. After closing it, you will get an error if you try to read it again.
+
+You can also read all the lines of the file and have them returned as a list (remember to re-open the file before trying to read it):
+```python
+>>> my_file = open("sonnet.txt", "r")
+>>> lines = my_file.readlines()
+>>> my_file.close()
+>>> lines
+["Shall I compare thee to a summer's day?\n", 'Thou art more lov'.... and so on
+```
+Now we have the lines in a nice list. However, both of these operations are *risky* because the file is read into memory as a whole. So if your file happens to be 5 times bigger than the available memory on the machine, you might freeze or crash Python, or the whole machine in the worst case. So for small files these methods work fine, but if the input file's size is unknown, they might be dangerous. 
+
+Another (better) way to read a file is line by line. 
+```python
+>>> my_file = open("sonnet.txt", "r")
+>>> line = my_file.readline()
+>>> line
+"Shall I compare thee to a summer's day?\"
+>>> line = my_file.readline()
+>>> line
+'Thou art more lovely and more temperate:\n'
+```
+Using `readline()` is nice because it remembers where you are in the file and will always return the next line. When end of file is reached, an empty string ('') is returned. 
+
+An even easier way to read the whole file line by line is with a for loop: 
+```python
+>>> my_file = open("sonnet.txt", "r")
+>>> for line in my_file:
+...	print(line)
+...  
+Shall I compare thee to a summer's day?
+
+Thou art more lovely and more temperate:
+... and so on
+```
+The loop will take care of going over all the lines and stopping when the end of file is reached.
+
+### Writing to a file
+
+To write to a file, we have two ways: overwriting everything or appending to the end. Let's first cover writing and overwriting. 
+
+Start by opening the file for writing. Be careful: *this will remove any existing file contents!*
+
+```python
+>>> my_file = open("newfile.txt", "w")
+>>> my_file.write("This string is awesome")
+>>> my_file.close()
+```
+Now we have created a new file and written something in it. Open the file and read its contents to check it's there.
+If you do it again, what happens? 
+```python
+>>> my_file = open("newfile.txt", "w")
+>>> my_file.write("A second awesome string")
+>>> my_file.close()
+```
+
+#### Appending
 
