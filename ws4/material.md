@@ -4,12 +4,14 @@ Start from Workshop 1 if you're completely new to programming and Python!
 
 * Functions & running your program
 * More data structures
-  * Lists - list comprehensions, sort/reverse, in-place, zip
+  * Lists - basic list operations, sort/reverse in-place, list comprehensions
   * Dictionaries
 * Data I/O
   * Reading a file
   * Writing to a file
+  * Appending to a file
 
+Note: `>>>` shows what the program will look like when typed into the Python command line interpreter. You can also save any of the sample code into a file and run it with `python your_file_name.py`. 
 
 ### Functions
 
@@ -21,21 +23,21 @@ A function is a re-usable bit of code that's very useful when we want to use the
 Let's make a function (notice the indentation): 
 
 ```python
-def print_hello():
-	print "Hello!"
+>>> def print_hello():
+...	print "Hello!"
 ```
 Now call the function: 
 
 ```python
-print_hello()
+>>> print_hello()
 ```
 
 A fuction can be given parameters (or arguments): 
 
 ```python
-def print_hello_with_name(name):
-	print "Hello " + name + "!"
-
+>>> def print_hello_with_name(name):
+...	print "Hello " + name + "!"
+...
 >>> print_hello_with_name("Python")
 Hello Python!
 ```
@@ -43,9 +45,9 @@ A fuction can be given any amount of parameters, but usually the fewer the bette
 
 A function can *return* something, which can then e.g. be saved into a variable: 
 ```python
-def addition(num_1, num_2):
-	return num_1 + num_2
-
+>>> def addition(num_1, num_2):
+...	return num_1 + num_2
+...
 >>> addition(10, 20)
 30
 >>> sum = addition(10, 20)
@@ -79,9 +81,6 @@ Exercises:
 * Create methods for subtraction, multiplication and division. Each method should have two parameters and return the result.
 
 * Create a class called Student which is given a name and a student number as parameters.
-
-
-
 
 ## Python Data Types
 
@@ -142,7 +141,7 @@ a
 b
 c
 ```
-Checking if an item is in the list: 
+Checking if an item is in the list is most easily done by using *in*: 
 ```python
 >>> my_list = ["a", "b", "c"]
 >>> "a" in my_list
@@ -162,6 +161,15 @@ False
 ['a', 'b', 'c', 'd']
 >>> my_list
 ['a', 'b', 'c', 'd']
+```
+Last but not least, Python offers something called *list comprehensions* where you do the same action for all members of a list, and get the a new list with the modified items returned.
+```python
+>>> my_list = ["a", "b", "c"]
+>>> [letter.upper() for letter in my_list]
+['A', 'B', 'C']
+>>> ascii_codes = [ord(letter) for letter in my_list]
+>>> ascii_codes
+[97, 98, 99]
 ```
 
 Exercises:
@@ -241,40 +249,44 @@ As you can see, the whole file is just one long string, with the line breaks (\n
 
 We also *closed* the file after reading it. After finishing with a file, you should always close the file to free up system resources taken up by the open file and to make sure the file won't get corrupted in case something goes wrong with your program. After closing it, you will get an error if you try to read it again.
 
-You can also read all the lines of the file and have them returned as a list (remember to re-open the file before trying to read it):
+You can also read all the lines of the file and have them returned as a list. Here is a nicer way of opening a file that will make sure it gets closed when we're done:
 ```python
->>> my_file = open("sonnet.txt", "r")
->>> lines = my_file.readlines()
->>> my_file.close()
+>>> with open("sonnet.txt", "r") as my_file:
+...	lines = my_file.readlines()
+...
 >>> lines
 ["Shall I compare thee to a summer's day?\n", 'Thou art more lov'.... and so on
 ```
-Now we have the lines in a nice list. However, both of these operations are *risky* because the file is read into memory as a whole. So if your file happens to be 5 times bigger than the available memory on the machine, you might freeze or crash Python, or the whole machine in the worst case. So for small files these methods work fine, but if the input file's size is unknown, they might be dangerous. 
+Now we have the lines in a nice list. However, both of these operations are *risky* because the file is read into memory as a whole. So if your file happens to be 5 times bigger than the available memory on the machine, you might freeze or crash Python, or the whole machine in the worst case. Also, `readlines()`reads the whole file, creates strings of all the lines and puts them in a list, processing a large file will take a long time before you can do anything with the contents. So for small files these methods work fine, but if the input file's size is large or unknown, they might be very inefficient or even dangerous. 
 
-Another (better) way to read a file is line by line. 
+A better way to read a file is line by line.
 ```python
->>> my_file = open("sonnet.txt", "r")
->>> line = my_file.readline()
->>> line
-"Shall I compare thee to a summer's day?\"
->>> line = my_file.readline()
->>> line
-'Thou art more lovely and more temperate:\n'
+>>> with open("sonnet.txt", "r") as my_file:
+...	line = my_file.readline()
+...     print(line)
+...     line2 = my_file.readline()
+...     print(line2)
+Shall I compare thee to a summer's day?
+
+Thou art more lovely and more temperate:
 ```
 Using `readline()` is nice because it remembers where you are in the file and will always return the next line. When end of file is reached, an empty string ('') is returned. 
 
 An even easier way to read the whole file line by line is with a for loop: 
 ```python
->>> my_file = open("sonnet.txt", "r")
->>> for line in my_file:
-...	print(line)
-...  
+>>> with open("sonnet.txt", "r") as my_file:
+...	for line in my_file:
+...	    print(line)
 Shall I compare thee to a summer's day?
 
 Thou art more lovely and more temperate:
 ... and so on
 ```
 The loop will take care of going over all the lines and stopping when the end of file is reached.
+
+Exercises
+* Read the contents of the sonnet file into a list using the for loop. Sort the list in reverse alphabetical order.
+* Read the contents of the sonnet file into a dictionary using the line number as key and the line's text as the value.
 
 ### Writing to a file
 
@@ -283,17 +295,33 @@ To write to a file, we have two ways: overwriting everything or appending to the
 Start by opening the file for writing. Be careful: *this will remove any existing file contents!*
 
 ```python
->>> my_file = open("newfile.txt", "w")
->>> my_file.write("This string is awesome")
->>> my_file.close()
+>>> with open("newfile.txt", "w") as my_file:
+...	my_file.write("This string is awesome")
 ```
 Now we have created a new file and written something in it. Open the file and read its contents to check it's there.
 If you do it again, what happens? 
 ```python
->>> my_file = open("newfile.txt", "w")
->>> my_file.write("A second awesome string")
->>> my_file.close()
+>>> with open("newfile.txt", "w") as my_file:
+...	my_file.write("A second awesome string")
 ```
 
+Exercises:
+* Save the contents of sonnet.txt to a list line by line, then write them line by line to a file sonnet2.txt.
+* Add line numbers in front of the lines in sonnet.txt. (Remember that opening a file in "w" mode will destroy its contents!)
+
+
 #### Appending
+
+Often we don't want to destroy the contents of a file, but instead add something to the end. For this purpose, you can open a file in the *append* mode: 
+```python
+>>> with open("newfile.txt", "a") as my_file:
+...	my_file.write("Adding something to the end")
+```
+If you now inspect the contents, you should have the old contents plus the new string. 
+
+Exercises:
+* Create a new file, and write the numbers 1-10 on their own rows. Note that you can only write strings into a file, so you might need to convert the numbers to strings first!
+* Append the numbers 11-20 to the end of this file. 
+
+## Project
 
