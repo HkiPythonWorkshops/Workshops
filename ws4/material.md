@@ -352,4 +352,4 @@ Exercises:
 
 * The function raw_input() can be used for obtaining input from terminal. Write an interactive game of rock-paper-scissors.
 * [Programming problems at Project Euler](https://projecteuler.net/archives)
-* 
+* [Reddit Daily Programmer Exercises](https://www.reddit.com/r/dailyprogrammer/wiki/challenges)
