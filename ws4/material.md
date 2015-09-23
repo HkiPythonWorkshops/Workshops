@@ -351,5 +351,8 @@ Exercises:
 ## Bonus exercises
 
 * The function raw_input() can be used for obtaining input from terminal. Write an interactive game of rock-paper-scissors.
+* [Shuffling List](https://www.reddit.com/r/dailyprogrammer/comments/3e0hmh/20150720_challenge_224_easy_shuffling_a_list/)
+* [Mangling Sentences](https://www.reddit.com/r/dailyprogrammer/comments/3aqvjn/20150622_challenge_220_easy_mangling_sentences/)
+* [Todo List](https://www.reddit.com/r/dailyprogrammer/comments/39ws1x/20150615_challenge_218_easy_todo_list_part_1/)
 * [Programming problems at Project Euler](https://projecteuler.net/archives)
 * [Reddit Daily Programmer Exercises](https://www.reddit.com/r/dailyprogrammer/wiki/challenges)
