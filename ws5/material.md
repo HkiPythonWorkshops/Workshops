@@ -94,7 +94,6 @@ Let's create a child template that will hold the actual content of our app. Unde
 ```html
 {% extends "layout.html" %}
 {% block content %}
-
 <div>
 	<h1>Hello from a child template!</h1>
 </div>
@@ -102,6 +101,7 @@ Let's create a child template that will hold the actual content of our app. Unde
 ```
 
 In our ``layout.html``, we change the body: 
+
 ```html
 <body>
 	<div id="content">{% block content %}{% endblock %}</div>
@@ -109,8 +109,69 @@ In our ``layout.html``, we change the body:
 ```
 
 And in our ``app.py``, we change which template is being rendered: 
+
 ```python
 @app.route('/')
 def main_page():
     return render_template("mainpage.html")
 ```
+Now when you refresh your page, it will loaded from the child template. 
+
+### Exercises
+
+Add a footer block to your ``layout.html`` and a new template that implements that block. Add e.g. a copyright string as the content of the block. 
+
+## Let's add some data! 
+
+So far, we've just been creating empty pages. The power of templates comes from how they can render data.
+
+Let's start by making a simple list and passing it as the data to our mainpage. 
+
+```python
+@app.route('/')
+def main_page():
+    months = ["January", "February", "March", "April"]
+    return render_template("mainpage.html", months=months)
+```
+
+In our template, let's make an ordered list of the items in the list inside the *content* block:
+
+```html
+<ol>
+	{% for month in months %}
+		<li>{{ month }}</li>
+	{% endfor %}
+</ol>
+``` 
+
+### Exercises
+
+Experiment with passing different kinds of and more than one variable to the template. Go to  [Jinja template docs](http://jinja.pocoo.org/docs/dev/templates/) to see what kinds of operations and statements are supported by Jinja. 
+
+## Data from an external source
+
+Here's where the fun really begins. Let's finally start integrating data from an API to our Flask app. In this example we'll use the [Finnkino XML API](http://www.finnkino.fi/XML) as an example, but feel free to use any other data source. 
+
+Instead of putting the logic for our API managers inside our Flask app, let's create a new directory called ``services``.
+
+Inside it, let's create a new file called e.g. ``finnkino.py``. This module will handle making requests to the Finnkino API and parsing the data we want. 
+
+Let's start by importing some modules we'll need and creating a class with some variables. 
+
+```python
+import requests
+import xml.etree.ElementTree as ET
+
+class FinnKinoXML(object):
+    areas = {}
+    area_url = "http://www.finnkino.fi/xml/TheatreAreas"
+    schedule_url = "http://www.finnkino.fi/xml/Schedule/"
+    headers = {
+        'User-Agent': "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:43.0) Gecko/20100101 Firefox/43.0",
+        'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    }
+```
+
+Now take a look at the [Areas XML](http://www.finnkino.fi/xml/TheatreAreas) and make a method for parsing all the area codes from the XML with [ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html). First make a GET request with the *requests* library and then parse the XML from the response. 
+
+
