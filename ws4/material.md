@@ -3,6 +3,8 @@
 Start from Workshop 1 if you're completely new to programming and Python!
 
 * Functions & running your program
+  * Classes
+  * Objects
 * More data structures
   * Lists - basic list operations, sort/reverse in-place, list comprehensions
   * Dictionaries
@@ -18,22 +20,25 @@ Note: `>>>` shows what the program will look like when typed into the Python com
 Make a new Python file, e.g. called exercises.py
 Run this file with the command `python exercises.py`
 
-A function is a re-usable bit of code that's very useful when we want to use the do the same thing many times in the same program. Instead of repeating the code, we make a function that can be called. :bangbang: *should there be an example*
+A function is a re-usable bit of code that's very useful when we want to use the do the same thing many times in the same program. Instead of repeating the code, we make a function that can be called.
 
 Let's make a function (notice the indentation): 
 
 ```python
 >>> def print_hello():
 ...	print "Hello!"
+...
 ```
-Now call the function: 
-
+Now call the function as many times as you like: 
 ```python
 >>> print_hello()
+Hello!
+>>> print_hello()
+Hello!
+>>> 
 ```
 
 A fuction can be given parameters (or arguments): 
-
 ```python
 >>> def print_hello_with_name(name):
 ...	print "Hello " + name + "!"
@@ -55,32 +60,47 @@ A function can *return* something, which can then e.g. be saved into a variable:
 30
 ```
 
+More on functions: [Python Docs](https://docs.python.org/3/tutorial/controlflow.html#defining-functions)
+
+* Create methods for subtraction, multiplication and division. Each method should have two parameters and return the result.
+* Create a method that takes a string and prints it out back to front.
+* Bonus: See the docs and create a function with two arguments that have default values.
+* Bonus: See the docs and create a function that takes a variable amount of integers as list. Return the maximum value found in the list.
+
 ### Classes and objects
 
-Class can be thought as an template to hold some re-usable functionality. Objects in Python are instances of that *class*. An object has properties and methods attached to it. Here's a sample Dog class (again, notice the indentation):
-
+A class can be thought as an template to hold some re-usable functionality. Objects in Python are instances of that *class*. An object has properties and methods attached to it. Here's a sample Dog class.   Again, notice the indentation!
+Note: it's probably easier to save this script in a .py file.
 
 ```python
 
 class Dog():
+	family = "Mammal"  # class variable, shared by all instances
 	
 	def __init__(self, breed):
-		self.breed = breed
+		self.breed = breed  # instance variable, specific to that instance
 
 	def bark(self):
 		print "Woof!"
 
-spotty = Dog("Golden retriever")
+spotty = Dog("Dalmatian")
+goldie = Dog("Golden retriever")
+
 print spotty.breed
+print goldie.breed
+
+print spotty.family
+print goldie.family
 
 spotty.bark()
 ```
 
+More about classes: [Python Docs](https://docs.python.org/3/tutorial/classes.html#a-first-look-at-classes)
+
 Exercises:
-
-* Create methods for subtraction, multiplication and division. Each method should have two parameters and return the result.
-
-* Create a class called Student which is given a name and a student number as parameters.
+* Create a class called Student which has the instance variables name and student, and the methods print_name() and print_number() which print the name and number
+* Create a class Book that has the instance variables *pages* which is given as an argument and *page_counter* that starts from 0. It should have a *read* method which turns the page. If the reader gets to the end of the book, print something nice and return *page_counter* to zero.
+* Bonus: read the docs (particularly [inheritance](https://docs.python.org/3/tutorial/classes.html#inheritance) and create a derived class Chihuahua that inherits class Dog and has at least one of its own instance variables and methods.
 
 ## Python Data Types
 
@@ -105,8 +125,8 @@ You can access items in a list by their index, starting from 0, and also change 
 >>> my_list[0]
 1
 >>> my_list[0] = 5
->>> my_list[0]
-5
+>>> my_list
+[5, 2, 3]
 ```
 
 You can ask for the list's length, reverse the list and sort it (in-place):
@@ -150,7 +170,7 @@ True
 False
 ```
 
-:bangbang: *python shallow-copy for lists?*
+Be careful when referring to a list from two or more variables. The list is not copied as a completely new object, but instead *shallow-copied*. Changes to the new list will apply to the old list since they share the reference, and vice versa.
 ```python
 >>> my_list = ['a', 'b', 'c']
 >>> new_list = my_list
@@ -172,8 +192,14 @@ Last but not least, Python offers something called *list comprehensions* where y
 [97, 98, 99]
 ```
 
-Exercises:
+More on lists: [Python 3 Docs](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range)
 
+Exercises:
+* Create a list with three fruit names. Append a fourth one to it. Change the 2nd item in the list to something else. 
+* Sort your list of fruit, then reverse it. 
+* Bonus: read the docs, then experiment with slices. How to get every third item in a list? How to get only the last three items in a list? 
+* Bonus: How to get the min or max value in a list? How to insert an item in the middle of a list or remove an item?
+* Bonus: Write a function that combines two lists by alternatingly taking elements, e.g. from [a, b, c] and [1, 2, 3], the function should return [a, 1, b, 2, c, 3].
 
 ### Dictionaries
 
@@ -217,8 +243,7 @@ Exercises:
 
 * Count how many of each letter there are in the string "Time And Relative Dimension In Space" using a dictionary to keep count of each letter's appearances. 
  * Hint: Iterate over the string  (strings can be iterated the same way as lists with a `for` loop). For each character, check if it's in your dictionary. If not, add a new item and put the value as 1. If it is, add 1 to the value. 
-
-* Create a dictionary with keys 1-15 with a loop, assign None as the value. Then get the keys, sort them and iterate over them.
+* Create a dictionary with keys 1-15 with a loop, assign the key squared (to the power of two) as the value.
 
 Read more about data structures in Python: 
 * [Python 2 docs](https://docs.python.org/2/tutorial/datastructures.html)
@@ -285,7 +310,7 @@ Thou art more lovely and more temperate:
 The loop will take care of going over all the lines and stopping when the end of file is reached.
 
 Exercises
-* Read the contents of the sonnet file into a list using the for loop. Sort the list in reverse alphabetical order.
+* Read the contents of the sonnet file into a list using the for loop way. Sort the list in reverse alphabetical order.
 * Read the contents of the sonnet file into a dictionary using the line number as key and the line's text as the value.
 
 ### Writing to a file
@@ -323,5 +348,11 @@ Exercises:
 * Create a new file, and write the numbers 1-10 on their own rows. Note that you can only write strings into a file, so you might need to convert the numbers to strings first!
 * Append the numbers 11-20 to the end of this file. 
 
-## Project
+## Bonus exercises
 
+* The function raw_input() can be used for obtaining input from terminal. Write an interactive game of rock-paper-scissors.
+* [Shuffling List](https://www.reddit.com/r/dailyprogrammer/comments/3e0hmh/20150720_challenge_224_easy_shuffling_a_list/)
+* [Mangling Sentences](https://www.reddit.com/r/dailyprogrammer/comments/3aqvjn/20150622_challenge_220_easy_mangling_sentences/)
+* [Todo List](https://www.reddit.com/r/dailyprogrammer/comments/39ws1x/20150615_challenge_218_easy_todo_list_part_1/)
+* [Programming problems at Project Euler](https://projecteuler.net/archives)
+* [Reddit Daily Programmer Exercises](https://www.reddit.com/r/dailyprogrammer/wiki/challenges)
