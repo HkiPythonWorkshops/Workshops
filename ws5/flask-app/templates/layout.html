@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.12.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+</head>
+<body>
+	<div id="contantent_container">{% block content %}{% endblock %}</div>
+	<div id="footer"> Example layout </div>
+</body>
+</html>

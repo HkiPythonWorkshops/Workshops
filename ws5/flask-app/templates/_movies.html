@@ -1,0 +1,13 @@
+<ul>
+	{% for id, movie in data['movies'].iteritems() %}
+	<li>
+		<div class="movieTitle">
+			<div> Nimi: {{ movie["title"] }}</div>
+			Genre(t): {{ movie["genres"] }}</br>
+			Ikäluokitus: <img src="{{ movie['rating'] }}" alt="Ikäluokitus" /><br />
+            <div id="movieImage">Kuva: <img src="{{ movie['image'] }}" alt="Kuva elokuvasta" /></div>
+			Leffatykki arvostelu: <a href="{{ movie['review'] }}">{{ movie['review'] }}</a></br>
+		</div>
+	</li>
+	{% endfor %}
+</ul>

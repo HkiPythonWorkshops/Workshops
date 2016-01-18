@@ -188,5 +188,6 @@ def get_movies_for_area(self, area_code):
 Now call this new method in your app.py to get the data into your mainpage template. Start by importing the FinnKinoXML class from the services.finnkino package, then create an instance of the class and use its method. Then pass that as the data to your template.
 
 
-When all of that works, take a look at the information in the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038) and parse some more data out of it.
+When all of that works, take a look at the information in the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038) and parse some more data out of it. Maybe an image, maybe the genres,  length, or any other data you like. 
+
  
