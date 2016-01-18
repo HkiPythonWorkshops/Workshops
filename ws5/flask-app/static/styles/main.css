@@ -1,9 +1,6 @@
 body {
     background-color: lightgrey;
-}
-
-h1 {
-    color: red;
+    font-family: Arial, Verdana, sans-serif;
 }
 
 .movieTitle {
