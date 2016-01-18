@@ -89,7 +89,7 @@ def main_page():
 
 If we're building an app any bigger than one page, we probably don't want to cram everything into the same template file. Instead, we can use *template inheritance*, where our main template consists of *blocks* that are implemented in smaller child templates. For a longer explanation, go to [Flask docs](http://flask.pocoo.org/docs/0.10/patterns/templateinheritance/). 
 
-Let's create a child template that will hold the actual content of our app. Under the *templates* directory, add a new file called e.g. ``mainpage.html``. Now the key thing is to link this new template to our existing template, which we do by adding an ``extend``statement to the top: 
+Let's create a child template that will hold the actual content of our app. Under the *templates* directory, add a new file called e.g. ``mainpage.html``. Now the key thing is to link this new template to our existing template, which we do by adding an ``extends``statement to the top: 
 
 ```html
 {% extends "layout.html" %}
@@ -154,13 +154,12 @@ Here's where the fun really begins. Let's finally start integrating data from an
 
 Instead of putting the logic for our API managers inside our Flask app, let's create a new directory called ``services``.
 
-Inside it, let's create a new file called e.g. ``finnkino.py``. This module will handle making requests to the Finnkino API and parsing the data we want. 
+Inside it, let's create a new file called e.g. ``finnkino.py`` and an empty ``__init__.py`` file. The `finnkino` module will handle making requests to the Finnkino API and parsing the data we want. 
 
 Let's start by importing some modules we'll need and creating a class with some variables. 
 
 ```python
 import requests
-import xml.etree.ElementTree as ET
 
 class FinnKinoXML(object):
     areas = {}
@@ -171,7 +170,23 @@ class FinnKinoXML(object):
         'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
     }
 ```
+To do anything useful with the Finnkino API, we need to use an **area code**. Take a look at the [Areas XML](http://www.finnkino.fi/xml/TheatreAreas) and pick one area ID. Let's make a function that fetches the movies for one area. First make a GET request with the [requests library](http://docs.python-requests.org/en/latest/user/quickstart/) and then parse the XML from the response. 
 
-Now take a look at the [Areas XML](http://www.finnkino.fi/xml/TheatreAreas) and make a method for parsing all the area codes from the XML with [ElementTree](https://docs.python.org/2/library/xml.etree.elementtree.html). First make a GET request with the *requests* library and then parse the XML from the response. 
+```python
+def get_movies_for_area(self, area_code):
+    request_url = "{}?area={}".format(self.schedule_url, 
+    			     area_code)
+    response = requests.get(request_url, headers=self.headers)
+    root = ET.fromstring(response.content)
+    # Check out ElementTree docs to find out how to parse 
+    # elements from the response data
+    
+    #return some data, e.g. a list of movie titles
+    return []
+```
+
+Now call this new method in your app.py to get the data into your mainpage template. Start by importing the FinnKinoXML class from the services.finnkino package, then create an instance of the class and use its method. Then pass that as the data to your template.
 
 
+When all of that works, take a look at the information in the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038) and parse some more data out of it.
+ 
