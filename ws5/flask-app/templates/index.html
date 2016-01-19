@@ -3,13 +3,13 @@
 <div>
 	<h1>Valitse toimipaikka</h1>
 	<select name="theatre" id="choose_theatre">
-		{% for id, name in data['areas'].iteritems() %}
+		{% for id, name in data['areas'].items() %}
 		<option value="{{ id }}">{{ name }}</option>
 		{% endfor %}
 	</select>
 	<h1>Elokuvat</h1>
 	<div id="movie_container">
-		
+
    </div>
    <img id="loader" src="{{ url_for('static', filename='media/ajax-loader.gif') }}" />
 </div>

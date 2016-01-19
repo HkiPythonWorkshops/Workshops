@@ -11,7 +11,7 @@ def get_movies_with_reviews(area_code):
     movie_container = {}
     movies = fk.get_movies_from_area(area_code)
     reviews = lt.get_movie_reviews()
-    for id, movie in movies.iteritems():
+    for id, movie in movies.items():
         review_link = ""
         movie_title = movie['normalized_title']
         if movie_title in reviews:
