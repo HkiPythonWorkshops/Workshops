@@ -18,7 +18,7 @@ Note: This tutorial should work with both Python 2 and 3.
 
 ## Import and set up Flask
 
-Create a new file and call it app.py.
+Create a new folder for this project. Inside it, craete a new python file and call it e.g. ``app.py``.
 
 The first thing we want to do is import Flask to check that it's installed correctly:
 ```python
@@ -40,7 +40,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-Now run your app with ``python app.py`` and head to http://localhost:5001.
+Now run your app with ``python app.py`` and head to http://localhost:5000.
 
 ## Flask: the basics
 
@@ -59,7 +59,7 @@ Add another page with a different route. Note that the current ``main_page()`` f
 
 Instead of having HTML inside our Python functions, which is not very nice or maintainable, Flask offers *templates*. By default the [Jinja2](http://jinja.pocoo.org/) template engine.
 
-Let's add our first template. First add a ``templates``folders in the same folder as your main app. Inside that folder, add a new HTML file called e.g. ``layout.html``.
+Let's add our first template. First add a ``templates``folders in your project folder. Inside that folder, add a new HTML file called e.g. ``layout.html``.
 
 Next, let's give our layout a basic skeleton:
 
@@ -89,7 +89,7 @@ def main_page():
 
 If we're building an app any bigger than one page, we probably don't want to cram everything into the same template file. Instead, we can use *template inheritance*, where our main template consists of *blocks* that are implemented in smaller child templates. For a longer explanation, go to [Flask docs](http://flask.pocoo.org/docs/0.10/patterns/templateinheritance/).
 
-Let's create a child template that will hold the actual content of our app. Under the *templates* directory, add a new file called e.g. ``mainpage.html``. Now the key thing is to link this new template to our existing template, which we do by adding an ``extends``statement to the top:
+Let's create a child template that will hold the actual content of our app. Under the ``templates`` directory, add a new file called e.g. ``mainpage.html``. Now the key thing is to link this new template to our existing template, which we do by adding an ``extends``statement to the top:
 
 ```html
 {% extends "layout.html" %}
@@ -179,7 +179,7 @@ def get_movies_for_area(self, area_code):
     response = requests.get(request_url, headers=self.headers)
     root = ET.fromstring(response.content)
     # Check out ElementTree docs to find out how to parse
-    # elements from the response data
+    # elements from the response data using find() and findall()
 
     #return some data, e.g. a list of movie titles
     return []
@@ -187,5 +187,123 @@ def get_movies_for_area(self, area_code):
 
 Now call this new method in your app.py to get the data into your mainpage template. Start by importing the FinnKinoXML class from the services.finnkino package, then create an instance of the class and use its method. Then pass that as the data to your template.
 
+When all of that works, take a look at the information in the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038) and parse some more data out of it. Maybe an image, maybe the genres, length, or any other data you like.
 
-When all of that works, take a look at the information in the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038) and parse some more data out of it. Maybe an image, maybe the genres,  length, or any other data you like.
+## Adding JavaScript
+
+Now we have a static page with some content, but that's pretty boring. Let's add the possibility for the user to select which area we want to see movies from. 
+
+Start by adding a new folder ``static`` in the root of your project folder. In it, add another folder called ``js``. Inside the ``js``folder, add a new file called e.g. ``app.js``.
+
+For the JQuery to work, you also need to copy the file [jquery-1.12.0.min.js](flask-app/static/js/jquery-1.12.0.min.js) into your ``js`` folder. Also make a new folder called ``media`` under your ``static`` folder and copy the file [ajax-loader.gif](flask-app/static/media/ajax-loader.gif) there.
+
+At this point, your folder tree should look something like this:
+
+```
+\ app.py
+\ services
+   \ __init__.py
+   \ finnkino.py	
+\ static
+   \ js
+       \ app.js
+       \ jquery-1.12.0.min.js
+   \ media
+   	   \ ajax-loader.gif
+\ templates
+   \ mainpage.html
+   \ layout.html
+```
+
+We also need to tell our app where to find these new JQuery files. Add these lines inside the ``<head>`` element in your ``layout.html``: 
+
+```html
+<script type="text/javascript" src="{{ url_for('static', filename='js/jquery-1.12.0.min.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/app.js') }}"></script>
+```
+
+This uses Flask's ``url_for`` method so we don't need to write the url ourselves, just give the relative path inside the project.
+
+In ``app.js``, let's add the following JQuery snippet: 
+
+```javascript
+$(document).ready(function(){
+	var $theatreAreaCodes = $("#choose_theatre");
+	var $movieContainer = $("#movie_container");
+	var $loader = $("#loader");
+
+	$movieContainer.load('/movies/'+1038+' ul', function(){
+		$loader.hide();
+	});
+
+	$theatreAreaCodes.on('change', function(evt){
+		var url = '/movies/'+$(this).val()+" ul";
+		$movieContainer.children().remove();
+		$loader.show();
+		$movieContainer.load(url, function(){
+			$loader.hide();
+		});
+	});
+});
+```
+
+What it does it take a value from ``choose_theatre``, then updates the values in ``movie_container`` accordingly. But wait, we don't have either of things in our app yet...
+
+Start by adding a method in the ``finnkino.py`` service that returns a dictionary in the format {id: 'Area name'} of all the possible areas and pass as the data for your ``mainpage`` method. 
+
+Then let's add to our ``mainpage`` a dropdown for selecting the area we're interested in, the loader gif  and replace the static movie information with a placeholder:  
+
+```html
+<div>
+	<h1>Choose area:</h1>
+	<select name="theatre" id="choose_theatre">
+    {% for id, name in areas.items() %}
+    <option value="{{ id }}">{{ name }}</option>
+    {% endfor %}
+	</select>
+	<h1>Movie list:</h1>
+	<div id="movie_container"></div>
+	<img id="loader" src="{{ url_for('static', filename='media/ajax-loader.gif') }}" />
+</div>
+
+```
+
+We also need a new template. Let's call it ``movies.html``. Let's move the things related to showing the movies to their own template:
+
+```html
+<ul>
+	{% for movie in movies %}
+	<li>
+		<div>
+			Title: {{ movie }}</br>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
+```
+
+Finally, let's add a new method in our ``app.py`` that returns the movies for a certain area. 
+
+```python
+@app.route('/movies/<area>')
+def movies(area):
+    movies = finnkino.get_movies_for_area(area)
+    return render_template("movies.html", movies=movies)
+```
+
+
+
+## Adding styles
+
+At the moment, our app is very ugly indeed. To use a CSS file with our app, let's add a ``styles`` folder inside our ``static`` folder. Then add a new CSS file, e.g. called main.css. 
+
+In your ``layout.html``, add a reference to your new stylesheet inside the ``<HEAD>`` element: 
+
+```html
+<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/main.css') }}">
+```
+
+Then start cranking out CSS! You probably want to add ``class``or ``id`` attributes to your HTML so it's easier to add styles. 
+
+
+
