@@ -3,7 +3,6 @@ import xml.etree.ElementTree as ET
 
 
 class FinnKinoXML(object):
-    areas = {}
     area_url = "http://www.finnkino.fi/xml/TheatreAreas"
     schedule_url = "http://www.finnkino.fi/xml/Schedule"
     headers = {
@@ -14,15 +13,17 @@ class FinnKinoXML(object):
     def get_area_codes(self):
         r = requests.get(self.area_url, headers=self.headers)
         root = ET.fromstring(r.content)
-        areas = root.findall("TheatreArea")
-        self._parse_areas(areas)
-        return self.areas
+        areas_xml = root.findall("TheatreArea")
+        area_codes = self._parse_areas(areas_xml)
+        return area_codes
 
     def _parse_areas(self, areas):
+        area_codes = {}
         for area in areas:
             id = area.find('ID').text
             name = area.find('Name').text
-            self.areas[id] = name
+            area_codes[id] = name
+        return area_codes
 
     def get_movies_from_area(self, area_code):
         url = "{}?area={}".format(self.schedule_url, area_code)
@@ -38,11 +39,9 @@ class FinnKinoXML(object):
             title = show.find('Title').text
             normalized_title = self.normalize_movie_title(title)
             rating = show.find('RatingImageUrl').text
-            print(rating)
             genres = show.find('Genres').text.split(",")
             images = list(show.find('Images'))
             image = images[0].text
-            print(image)
             movies[event_id] = {
                 "title": title,
                 "normalized_title": normalized_title,

@@ -18,14 +18,9 @@ Note: This tutorial should work with both Python 2 and 3.
 
 ## Import and set up Flask
 
-Create a new folder for this project. Inside it, craete a new python file and call it e.g. ``app.py``.
+Create a new folder for this project. Inside it, create a new python file and call it e.g. ``app.py``.
 
-The first thing we want to do is import Flask to check that it's installed correctly:
-```python
-import flask
-```
-
-Once we've done that, we can build the smallest possible Flask app, e.g. in a file called _app.py_:
+Once we've done that, we can build the smallest possible Flask app:
 
 ```python
 from flask import Flask
@@ -40,7 +35,7 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-Now run your app with ``python app.py`` and head to http://localhost:5000.
+Now run your app with ``python app.py`` and head to **http://localhost:5000**. Keep the app running in the background during the whole session. 
 
 ## Flask: the basics
 
@@ -57,7 +52,7 @@ Add another page with a different route. Note that the current ``main_page()`` f
 
 ## Flask templates
 
-Instead of having HTML inside our Python functions, which is not very nice or maintainable, Flask offers *templates*. By default the [Jinja2](http://jinja.pocoo.org/) template engine.
+Instead of having HTML inside our Python functions, which is not very nice or maintainable, Flask offers *templates*. By default the [Jinja2](http://jinja.pocoo.org/) template engine is used.
 
 Let's add our first template. First add a ``templates``folders in your project folder. Inside that folder, add a new HTML file called e.g. ``layout.html``.
 
@@ -66,10 +61,10 @@ Next, let's give our layout a basic skeleton:
 ```html
 <!DOCTYPE html>
 <html>
-<head />
-<body>
-	<h1>Hello world from the template!</h1>
-</body>
+  <head />
+  <body>
+    <h1>Hello world from the template!</h1>
+  </body>
 </html>
 ```
 
@@ -84,6 +79,8 @@ from flask import Flask, render_template
 def main_page():
     return render_template("layout.html")
 ```
+
+To see this update, you just need to refresh the page in your browser, no need to stop and start the server.
 
 ### Template inheritance
 
@@ -115,11 +112,11 @@ And in our ``app.py``, we change which template is being rendered:
 def main_page():
     return render_template("mainpage.html")
 ```
-Now when you refresh your page, it will loaded from the child template.
+Now when you refresh your page, it will be loaded from the child template.
 
 ### Exercises
+Add a second child template and a new function in ``app.py`` with a new route that renders the new template. 
 
-Add a footer block to your ``layout.html`` and a new template that implements that block. Add e.g. a copyright string as the content of the block.
 
 ## Let's add some data!
 
@@ -146,7 +143,9 @@ In our template, let's make an ordered list of the items in the list inside the 
 
 ### Exercises
 
-Experiment with passing different kinds of and more than one variable to the template. Go to  [Jinja template docs](http://jinja.pocoo.org/docs/dev/templates/) to see what kinds of operations and statements are supported by Jinja.
+Experiment with passing different kinds of and more than one variable to the template. Go to  [Jinja template docs](http://jinja.pocoo.org/docs/dev/templates/) to see what kinds of operations and statements are supported by Jinja. 
+
+You could also try passing a dictionary and accessing the keys and values in a loop: ``{% for key, value in my_dict.items() %}``
 
 ## Data from an external source
 
@@ -160,9 +159,9 @@ Let's start by importing some modules we'll need and creating a class with some 
 
 ```python
 import requests
+import xml.etree.ElementTree as ET
 
 class FinnKinoXML(object):
-    areas = {}
     area_url = "http://www.finnkino.fi/xml/TheatreAreas"
     schedule_url = "http://www.finnkino.fi/xml/Schedule/"
     headers = {
@@ -170,7 +169,7 @@ class FinnKinoXML(object):
         'Accept': "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
     }
 ```
-To do anything useful with the Finnkino API, we need to use an **area code**. Take a look at the [Areas XML](http://www.finnkino.fi/xml/TheatreAreas) and pick one area ID. Let's make a function that fetches the movies for one area. First make a GET request with the [requests library](http://docs.python-requests.org/en/latest/user/quickstart/) and then parse the XML from the response.
+To do anything useful with the Finnkino API, we need to use an **area code**. Take a look at the [Areas XML](http://www.finnkino.fi/xml/TheatreAreas) and pick one area ID. Let's make a function that fetches the movies for one area. First make a GET request with the [requests library](http://docs.python-requests.org/en/latest/user/quickstart/) and then parse the XML from the response from the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038). 
 
 ```python
 def get_movies_for_area(self, area_code):
@@ -189,13 +188,30 @@ Now call this new method in your app.py to get the data into your mainpage templ
 
 When all of that works, take a look at the information in the [showsXML](http://www.finnkino.fi/xml/Schedule/?area=1038) and parse some more data out of it. Maybe an image, maybe the genres, length, or any other data you like.
 
+If you want to display more data, you can use e.g. something like this, assuming you're passing the correct type of data to the template: 
+
+```html
+<ul>
+	{% for id, movie in movies.items() %}
+	<li style="list-style: none;">
+		<div class="movieTitle">
+			Title: {{ movie["title"] }}<br />
+			Genre(s): {{ movie["genres"] }}<br />
+			Rating: <img src="{{ movie['rating'] }}" alt="Ikäluokitus" /><br />
+            <div id="movieImage">Image: <img src="{{ movie['image'] }}" alt="Image from the movie" /></div>
+		</div>
+	</li>
+	{% endfor %}
+</ul>
+```
+
 ## Adding JavaScript
 
 Now we have a static page with some content, but that's pretty boring. Let's add the possibility for the user to select which area we want to see movies from. 
 
 Start by adding a new folder ``static`` in the root of your project folder. In it, add another folder called ``js``. Inside the ``js``folder, add a new file called e.g. ``app.js``.
 
-For the JQuery to work, you also need to copy the file [jquery-1.12.0.min.js](flask-app/static/js/jquery-1.12.0.min.js) into your ``js`` folder. Also make a new folder called ``media`` under your ``static`` folder and copy the file [ajax-loader.gif](flask-app/static/media/ajax-loader.gif) there.
+For the JQuery to work, you also need to copy the file [jquery-1.12.0.min.js](flask-app/static/js/jquery-1.12.0.min.js) into your ``js`` folder. Also make a new folder called ``media`` under your ``static`` folder and copy the file [ajax-loader.gif](flask-app/static/media/ajax-loader.gif) there. (**NOTE**: right-clicking and doing "Save as..." doesn't work for these two files. You have to either clone the repo and get them from there, or open the links and click "Raw", and then do "Save as..."). 
 
 At this point, your folder tree should look something like this:
 
@@ -305,5 +321,11 @@ In your ``layout.html``, add a reference to your new stylesheet inside the ``<HE
 
 Then start cranking out CSS! You probably want to add ``class``or ``id`` attributes to your HTML so it's easier to add styles. 
 
+## Adding data from another API
 
+We're fetching data from Finnkino, but how about combining that with movie reviews from [Leffatykki's API](http://www.leffatykki.com/api)? 
 
+By now you know how to add a new service, how to fetch data from an API with ``requests`` and how to use import that service in your main app. You'll probably want to add a method in your main app where you fetch data from both APIs and combine it before it passing it onto to the movie template. 
+
+## Build something even cooler
+You now know how to use Flask to build a small web app and how to bring in data from external sources. There is a huge number of open APIs offering all kinds of data out there. Some need you to register and request an API key to access the data, but after that you'll get access to enormous amounts of data. Use your imagination to make something cool!  

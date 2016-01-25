@@ -2,11 +2,11 @@
 	{% for id, movie in movies.items() %}
 	<li style="list-style: none;">
 		<div class="movieTitle">
-			<div> Nimi: {{ movie["title"] }}</div>
-			Genre(t): {{ movie["genres"] }}</br>
-			Ikäluokitus: <img src="{{ movie['rating'] }}" alt="Ikäluokitus" /><br />
-            <div id="movieImage">Kuva: <img src="{{ movie['image'] }}" alt="Kuva elokuvasta" /></div>
-			Leffatykki arvostelu: <a href="{{ movie['review'] }}">{{ movie['review'] }}</a></br>
+			Name: {{ movie["title"] }}<br />
+			Genre(s): {{ movie["genres"] }}<br />
+			Rating: <img src="{{ movie['rating'] }}" alt="Rating" /><br />
+            <div id="movieImage">Image: <img src="{{ movie['image'] }}" alt="Image from the movie" /></div>
+			Leffatykki review: <a href="{{ movie['review'] }}">{{ movie['review'] }}</a></br>
 		</div>
 	</li>
 	{% endfor %}
