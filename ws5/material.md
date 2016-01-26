@@ -6,13 +6,12 @@ For a nice Flask tutorial which covers the stuff here and a lot more, see [Flask
 
 * List of Finnish open APIs:
 [API suomi](http://apisuomi.fi/rajapinnat-kompaktisti/)
-* API search: [http://apis.io/](APIs.io)
+* API search: [APIs.io](http://apis.io/)
 
 ### Pre-Requirements
 * [Python](https://github.com/HkiPythonWorkshops/Workshops)
 * install flask with **Pip**  
 ```pip install flask```
-* or see this [doc](http://webprojects.eecs.qmul.ac.uk/fa303/pgs/install.html) (win/linux/osx)
 
 Note: This tutorial should work with both Python 2 and 3.
 
