@@ -1,0 +1,3 @@
+[submodule "ws6/machine-learning"]
+	path = ws6/machine-learning
+	url = git@bitbucket.org:aslani/machine-learning.git
