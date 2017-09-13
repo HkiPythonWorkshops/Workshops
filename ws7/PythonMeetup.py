@@ -128,7 +128,7 @@ print(utcdaterange)
 solardata_df = pd.DataFrame(solardata2)
 
 #From file
-path="H:\spring\pworkshop\MeetupHeatingData.csv"
+path="./MeetupHeatingData.csv"
 heatdata_df=pd.read_csv(path, sep=";", header=0, decimal=",")
 heatdata_df
 heatdata_df.head()
