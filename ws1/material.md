@@ -8,14 +8,14 @@ To check that you have installed Python successfully, type:
 `python --version`
 
 You should see something like:
-`Python 2.7.9`
+`Python 3.7.5`
 
 To start interacting with Python in interactive mode, type: 
 `python`
 
 You should see something like: 
 ```
-Python 2.7 (#1, Feb 28 2010, 00:02:06)
+Python 3.6 (#1, Dec 19 2019, 00:02:06)
 Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
@@ -34,7 +34,7 @@ To exit this mode, type:
 Another way to interact with Python is to save commands in a separate Python file and tell Python to run it. 
 Save the following in a file **hello.py**:
 ```python
-print “Hello world!”
+print(“Hello world!”)
 ```
 
 Then run the program from the same folder from the command line with: 
@@ -99,13 +99,13 @@ Exponents can be calculated with __**__:
 
 A string is a piece of text, or some letters and characters. 
 ```python
->>> print "Hello world!"
+>>> print("Hello world!")
 Hello world!
->>> print 'John Smith'
+>>> print('John Smith')
 John Smith
->>> print "He said 'hello'."
+>>> print("He said 'hello'.")
 He said 'hello'.
->>> print 'She said "hi".'
+>>> print('She said "hi".')
 She said "hi".
 ```
 
@@ -113,7 +113,7 @@ As you can see, strings can be surrounded by single **'** or double **"** quotes
 
 Strings can also contain special characters, most common are **\n** or line break: 
 ```python
->>> print "One\nTwo\nThree"
+>>> print("One\nTwo\nThree")
 One
 Two
 Three
@@ -121,11 +121,11 @@ Three
 
 You can use some of the mathematical operators to **concatenate** (add together) strings:
 ```python
->>> print "awe" + "some"
+>>> print("awe" + "some")
 awesome
->>> print "?" * 4
+>>> print("?" * 4)
 ????
->>> print "Yipp" + "e" * 5 + "!"
+>>> print("Yipp" + "e" * 5 + "!")
 Yippeeeee!
 ```
 
@@ -193,7 +193,7 @@ Variables point to an item, which can be almost anything, except another variabl
 var1 = 1
 var2 = var1
 var1 = 2
-print var2
+print(var2)
 ```
 
 What’s the value of *var2*? It's still 1,  since it's actually pointing to number 1 and not to *var1*.
@@ -234,7 +234,7 @@ Often in programs you need to do different things based on the situation. In the
 ```python
 >>> number = 1
 >>> if number > 0:
-...     print "Your number is positive!"
+...     print("Your number is positive!")
 ...
 Your number is positive!
 ```
@@ -244,9 +244,9 @@ You might have to do something else in case the **if** clause returns a False va
 ```python
 >>> number = -1
 >>> if number > 0:
-...     print "Your number is positive!"
+...     print("Your number is positive!")
 ...else:
-...     print "Your number is negative!"
+...     print("Your number is negative!")
 Your number is negative!
 ```
 
@@ -254,11 +254,11 @@ Sometimes you have to take into account even more possibilities:
 ```python
 >>> number = 0
 >>> if number > 0:
-...     print "Positive!"
+...     print("Positive!")
 ... elif number == 0:
-...     print "Zero!"
+...     print("Zero!")
 ... else:
-...     print "Negative!"
+...     print("Negative!")
 ...
 Zero!
 ```
@@ -271,7 +271,7 @@ A list in Python is a collection of items and can contain almost anything.
 
 ```python
 >>> shopping_list = ["eggs", "milk", "bread"]
->>> print shopping_list
+>>> print(shopping_list)
 ['eggs', 'milk', 'bread']
 >>> my_variable = 5
 >>> my_list = [1, 2.0, "a string", True, my_variable]
@@ -327,7 +327,7 @@ Often we need to do things many times. A **for** loop allows us to do something 
 ```python
 >>> books = ["Fellowship of the Ring", "The Two Towers", "Return of the King"]
 >>> for book in books:
-...     print book
+...     print(book)
 ...
 Fellowship of the Ring
 The Two Towers
@@ -337,7 +337,7 @@ Return of the King
 When you need to do something a certain amount of times, you can use range(x, y): 
 ```python
 >>> for i in range(1, 5):
-...     print i
+...     print(i)
 ...
 1
 2
@@ -349,7 +349,7 @@ A **while** loop, on the other hand, allows us to repeat an action until the con
 ```python
 >>> i = 1
 >>> while i < 5:
-...     print i
+...     print(i)
 ...     i = i + 1
 ...
 1
@@ -361,7 +361,7 @@ A **while** loop, on the other hand, allows us to repeat an action until the con
 It's important to have a condition that will eventually return **False**! Otherwise your program will get stuck. Don't try this (or if you do, click ctrl+c to stop the loop): 
 ```python
 >>> while 10 > 5:
-...     print "This is an infinite loop!"
+...     print("This is an infinite loop!")
 ...
 This is an infinite loop!
 This is an infinite loop!
