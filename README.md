@@ -1,8 +1,8 @@
-## HKI Python Workshops Content
+## HKI (Helsinki) Python Workshops Content
 #####
 
 ### Material
-You can find the workshops content in it's corresponding folder e.g.
+You can find the workshops content in its corresponding folder e.g.
 
 `ws1/material.md` *contains all material that we cover during the meetup*
 
