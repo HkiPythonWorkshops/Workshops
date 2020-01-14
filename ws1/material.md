@@ -180,7 +180,7 @@ A **variable** can be used to store a number, a string, or most other things. Th
 
 ```python
 >>> name = "John Smith"
->>> print name
+>>> print(name)
 John Smith
 >>> width = 20
 >>> height = 5 * 9
