@@ -24,7 +24,7 @@ You can now write commands after the >>> and press enter:
 ```python
 >>> 1+1
 2
->>> print “Hello world!”
+>>> print(“Hello world!”)
 Hello world!
 ```
 
