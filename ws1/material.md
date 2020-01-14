@@ -24,7 +24,7 @@ You can now write commands after the >>> and press enter:
 ```python
 >>> 1+1
 2
->>> print “Hello world!”
+>>> print(“Hello world!”)
 Hello world!
 ```
 
@@ -180,7 +180,7 @@ A **variable** can be used to store a number, a string, or most other things. Th
 
 ```python
 >>> name = "John Smith"
->>> print name
+>>> print(name)
 John Smith
 >>> width = 20
 >>> height = 5 * 9

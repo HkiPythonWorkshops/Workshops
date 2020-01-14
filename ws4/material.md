@@ -26,7 +26,7 @@ Let's make a function (notice the indentation):
 
 ```python
 >>> def print_hello():
-...	print "Hello!"
+...	print("Hello!")
 ...
 ```
 Now call the function as many times as you like: 
@@ -41,7 +41,7 @@ Hello!
 A fuction can be given parameters (or arguments): 
 ```python
 >>> def print_hello_with_name(name):
-...	print "Hello " + name + "!"
+...	print("Hello " + name + "!")
 ...
 >>> print_hello_with_name("Python")
 Hello Python!
@@ -81,16 +81,16 @@ class Dog():
 		self.breed = breed  # instance variable, specific to that instance
 
 	def bark(self):
-		print "Woof!"
+		print("Woof!")
 
 spotty = Dog("Dalmatian")
 goldie = Dog("Golden retriever")
 
-print spotty.breed
-print goldie.breed
+print(spotty.breed)
+print(goldie.breed)
 
-print spotty.family
-print goldie.family
+print(spotty.family)
+print(goldie.family)
 
 spotty.bark()
 ```
@@ -145,7 +145,7 @@ Iterating over a list of items is a very common task:
 ```python
 >>> numbers = [1, 2, 3]
 >>> for number in numbers: 
-...     print number
+...     print(number)
 ... 
 1
 2
@@ -156,7 +156,7 @@ So is iterating over a list based on the indexes:
 ```python
 >>> my_list = ["a", "b", "c"]
 >>> for i in range (0, len(my_list)): 
-...     print my_list[i]
+...     print(my_list[i])
 a
 b
 c
